@@ -1,0 +1,15 @@
+- It is not allowed to turn the tablet during the game. The tablet must be held with the view direction - like an arrow.
+
+- "You are here!"-information: This information is very important to the participant - he/she has to remember it at the beginning of the following tasks.
+
+- Navigation-to-a-flag tasks: These tasks ask the participant to go to the displayed location in the real-world. If he/she thinks, he/she is at the right spot, the "O.K." button has to be pressed.
+
+- Navigation-with-an-arrow tasks: In these tasks, the participant has to follow the arrow that points to a certain point in the real-world. The participant is allowed to walk around obstacles (and is not forced to go straight). During these tasks, he/she has to be attentive to the environment and the paths walked.
+
+- Self-location tasks: In these tasks, the participant has to mark his/her location in the real-world as accurate as possible on the map.
+
+- Direction tasks: In these tasks, the participant has to answer very precise by using the tablet like an arrow marking the view direction.
+
+- When clicking on the map, the map always zooms in first. Marker will only appear with a second click on the map.
+
+- The "O.K."-button must be pressed _after_ solving a task.

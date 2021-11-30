@@ -1,0 +1,72 @@
+<!-- Fig. 4: Density plots for the Direction Task performance -->
+
+<table style="width: 100%; border-collapse: collapse; border: 1px solid grey; text-align: center;">
+  <colgroup>
+    <col span="1" style="background-color:lightgrey; border: 1px solid grey;">
+    <col span="2" style="border: 1px solid grey; width: 50%">
+  </colgroup>
+  <tr style="background-color:lightgrey; border: 1px solid grey;">
+    <td></td>
+    <td><center> **Accuracy Data** </center></td>
+    <td><center> **Process Data** </center></td>
+  </tr>
+  <tr style="border: 1px solid grey;">
+    <td><center>**Mark-View-Direction Tasks**</center></td>
+    <td>
+```{r plot mark-view-direction task performance{{z}}-1, message=FALSE, echo=FALSE}
+plot_DM1 <- data.frame("angle"=vdirectiontasks_raw$DM1)
+plot_DM2 <- data.frame("angle"=vdirectiontasks_raw$DM2)
+plot_DM3 <- data.frame("angle"=vdirectiontasks_raw$DM3)
+plot_DM4 <- data.frame("angle"=vdirectiontasks_raw$DM4)
+plot_DM5 <- data.frame("angle"=vdirectiontasks_raw$DM5)
+plot_DM6 <- data.frame("angle"=vdirectiontasks_raw$DM6)
+plot_DMall <- rbind(plot_DM1, plot_DM2, plot_DM3, plot_DM4, plot_DM5, plot_DM6)
+
+ggplot(plot_DMall, aes(x=angle)) + 
+  geom_histogram(aes(y=..density..),
+                 colour="black", fill="white", bins=30) +
+  geom_density(alpha=.2, fill="#3880ff") +
+  xlab("deviation (in °)")
+```
+    </td>
+    <td>
+    </td>
+  </tr>
+  <tr style="border: 1px solid grey;">
+    <td><center>**Adopt-View-Direction Tasks**</center></td>
+    <td>
+```{r plot adopt-view-direction task performance{{z}}-1, message=FALSE, echo=FALSE}
+plot_DA1 <- data.frame("angle"=vdirectiontasks_raw$DA1)
+plot_DA2 <- data.frame("angle"=vdirectiontasks_raw$DA2)
+plot_DA3 <- data.frame("angle"=vdirectiontasks_raw$DA3)
+plot_DA4 <- data.frame("angle"=vdirectiontasks_raw$DA4)
+plot_DA5 <- data.frame("angle"=vdirectiontasks_raw$DA5)
+plot_DA6 <- data.frame("angle"=vdirectiontasks_raw$DA6)
+plot_DAall <- rbind(plot_DA1, plot_DA2, plot_DA3, plot_DA4, plot_DA5, plot_DA6)
+
+ggplot(plot_DAall, aes(x=angle)) + 
+  geom_histogram(aes(y=..density..),
+                 colour="black", fill="white", bins=30) +
+  geom_density(alpha=.2, fill="#3880ff") +
+  xlab("deviation (in °)")
+```
+    </td>
+    <td>
+```{r plot sum of turnings performance{{z}}, echo = FALSE, message = FALSE, echo=FALSE}
+plot_daturn1 <- data.frame("sumofturnings"=vdirectiontasks_raw$daturn1)
+plot_daturn2 <- data.frame("sumofturnings"=vdirectiontasks_raw$daturn2)
+plot_daturn3 <- data.frame("sumofturnings"=vdirectiontasks_raw$daturn3)
+plot_daturn4 <- data.frame("sumofturnings"=vdirectiontasks_raw$daturn4)
+plot_daturn5 <- data.frame("sumofturnings"=vdirectiontasks_raw$daturn5)
+plot_daturn6 <- data.frame("sumofturnings"=vdirectiontasks_raw$daturn6)
+plot_daturnall <- rbind(plot_daturn1, plot_daturn2, plot_daturn3, plot_daturn4, plot_daturn5, plot_daturn6)
+
+ggplot(plot_daturnall, aes(x=sumofturnings)) + 
+  geom_histogram(aes(y=..density..),
+                 colour="black", fill="white", bins=30) +
+  geom_density(alpha=.2, fill="#3880ff") +
+  xlab("sum of turnings (in °)")
+```
+    </td>
+  </tr>
+</table>

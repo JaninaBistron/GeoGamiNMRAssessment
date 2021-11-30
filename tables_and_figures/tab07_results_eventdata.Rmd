@@ -1,0 +1,22 @@
+<!-- Tab. 7: Results Event Data -->
+
+```{r shiny app - show results event data{{z}}, echo = FALSE}
+eventshiny{{z}} <- logfile$events
+# delete time stamps
+for (n in 1:participants){
+  eventshiny{{z}}[[n]] <- select(eventshiny{{z}}[[n]], -task_id, -timestamp)
+}
+# Shiny UI --------------------------------------------------------------------------------------------------
+ui_e{{z}} <- fluidPage(
+  selectInput("input_participant", label = "Choose participant:",
+            choices = c(1:participants), selected = 1, width = "140px"),
+  div(tableOutput("values_e{{z}}"), style = "font-size: 80%"),
+)
+# Shiny Server ----------------------------------------------------------------------------------------------
+server_e{{z}} <- function(input, output) {
+  selectValues <- reactive({eventshiny{{z}}[[as.numeric(input$input_participant)]]})
+  output$values_e{{z}} <- renderTable({selectValues()}, bordered=TRUE, digits=5)
+}
+# Shiny App --------------------------------------------------------------------------------------------------
+shinyApp(ui_e{{z}}, server_e{{z}})
+```

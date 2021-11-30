@@ -1,0 +1,41 @@
+GeoGami NMR assessment for the location `r location` is evaluated by executing an item analysis as well as by determining the split-half-reliability and validity of the assessment.
+
+#### Item Analysis and Cronbach's Alpha
+
+For analyzing the items, we estimate _Cronbach's Alpha_ for each task type as well as the _item-total correlation_ for each task. Tasks with an item-total correlation less than 0.3 are dropped ("dropped tasks"). Moreover, the Cronbach's Alpha is estimated again by _excluding_ the dropped tasks.
+
+```{r calculate cronbachs alpha and item correlation{{z}}, echo=FALSE, warning=FALSE, message=FALSE, results=FALSE}
+source("calculations/2_testeval_items_reliability/01_cronbachsalpha_itemtotal.R", local = knitr::knit_global())
+```
+
+```{r tab13{{z}}, echo = FALSE}
+src <- lapply(z, function(z) knitr::knit_expand(file = "tables_and_figures/tab13_cronbachsalpha_itemtotal.Rmd"))
+```
+`r knitr::knit(text = unlist(src))`
+_Tab. `r 13 - tabmin` - `r location`: Cronbach's Alpha and Item-Total Correlations._
+
+The _difficulty of a task_ is calculated by dividing the total scores of all participants per task by the maximum score for these tasks. For each task type, pairs of tasks (task twins) with similar task difficulties are determined. One task of each pair belongs to test half 1, the other task to test half 2. In the following table the test-halves and task difficulties are visualized.
+
+```{r calculate task difficulty{{z}}, echo=FALSE}
+source("calculations/2_testeval_items_reliability/02_taskdifficulty.R", local = knitr::knit_global())
+```
+
+```{r tab14{{z}}, echo = FALSE}
+src <- lapply(z, function(z) knitr::knit_expand(file = "tables_and_figures/tab14_taskdifficulties.Rmd"))
+```
+`r knitr::knit(text = unlist(src))`
+_Tab. `r 14 - tabmin` - `r location`: Determined Task-Twins and Test-Halves via Task Difficulties._
+
+#### Split-Half Reliability
+
+On the basis of the task difficulties, assessment half scores for each participant are determined. In order to estimate the split-half reliability, the scores of assessment half 1 and 2 are correlated. The results are corrected with the Spearman-Brown-Formula. _We assume two parallel assessment halves._
+
+```{r calculate test half scores and split half reliability{{z}}, echo=FALSE, warning=FALSE}
+source("calculations/2_testeval_items_reliability/03_splithalfreliability.R", local = knitr::knit_global())
+```
+
+```{r tab15{{z}}, echo = FALSE}
+src <- lapply(z, function(z) knitr::knit_expand(file = "tables_and_figures/tab15_splithalfreliability.Rmd"))
+```
+`r knitr::knit(text = unlist(src))`
+_Tab. `r 15 - tabmin` - `r location`: Split-Half-Reliability Coefficients with p-values for Spearman's rho in brackets._

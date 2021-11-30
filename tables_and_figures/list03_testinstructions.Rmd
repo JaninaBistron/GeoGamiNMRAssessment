@@ -1,0 +1,9 @@
+- The test coordinator has to answer all questions regarding the general meaning of symbols and the task instructions during the test by repeating the content of the tutorial (e.g.: "green spots on the map symbolize trees" or "in the flag-tasks you first have to go to the flag in the real-world and then to press the O.K.-button"), but he/she is not allowed to show the participant the symbols correspondence in the real-world or to give hints for solving the tasks. He can also remember the participant to use the audio button.
+
+- The test coordinator is not allowed to give the participant any feedback or reaction on his/her ideas for solving the tasks or task solutions.
+
+- He/she has to inform the participant when leaving the yellow-marked test area (in the new version of OriGami the app gives this feedback itself).
+
+- If a participant skips a task accidentally, the data is invalid but the participant is allowed to finish the game in order to find the treasure (in the current version of OriGami there is a "back"-button for coping with this kind of problem).
+
+- The test coordinator can determine breaks if there are any disturbances that may effect the participant's concentration.

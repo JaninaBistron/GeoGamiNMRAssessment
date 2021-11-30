@@ -1,0 +1,63 @@
+<!-- Tab. 3: Event Data -->
+
+<table style="width: 100%; border-collapse: collapse; border: 1px solid grey; text-align: center;">
+  <colgroup>
+    <col span="1" style="background-color:lightgrey; border: 1px solid grey;">
+    <col span="2" style=" border: 1px solid grey;">
+  </colgroup>
+  <tr style="background-color:lightgrey; border: 1px solid grey;">
+    <td>**Data**</td>
+    <td>**Variable names**</td>
+    <td>**Description**</td>
+  </tr>
+  <tr style="border: 1px solid grey;">
+    <td>**User's real location**</td>
+    <td> _longitude_real, latitude_real_</td>
+    <td>Geographic location from the GPS sensor of the device hold by the user while pressing the "O.K."-button in a 
+    self-location or navigation-to-a-flag task (additionally determined: GPS accuracy, variable name: _accuracy_)</td>
+  </tr>
+  <tr style="border: 1px solid grey;">
+    <td>**User's clicked location**</td>
+    <td> _longitude_click, latitude_click_</td>
+    <td>Geographic location of the touch points on the map in a self-location task. The pixel coordinates of the touch points are determined at the center of the
+    touch event point relative to the map and measured from the top left corner (see: MapTouchEvent [mapbox](https://docs.mapbox.com/mapbox-gl-js/api/))</td>
+  </tr>
+  <tr style="border: 1px solid grey;">
+    <td>**Location of the flag**</td>
+    <td> _longitude_marked, latitude_marked_</td>
+    <td>Geographic location of flag location on the map (task settings) in a navigation-to-a-flag task</td>
+  </tr>
+  <tr style="border: 1px solid grey;">
+    <td>**Number of pan events**</td>
+    <td> _pannings_</td>
+    <td>Determined by 
+    [counting the events](https://github.com/origami-team/origami/blob/master/src/app/services/tracker.service.ts#L71-L75)
+    after the map completes a transition from one view to another as a result of a user action in a self-location-task (see: moveend [mapbox](https://docs.mapbox.com/mapbox-gl-js/api/))</td>
+  </tr>
+  <tr style="border: 1px solid grey;">
+    <td>**Number of zoom events**</td>
+    <td> _zoomings_</td>
+    <td>Determined by 
+    [counting the events](https://github.com/origami-team/origami/blob/master/src/app/services/tracker.service.ts#L77-L81)
+    after the map completes a transition from one zoom level to another as a result of a user action (divided by 2) in a self-location-task (see: zoomend [mapbox](https://docs.mapbox.com/mapbox-gl-js/api/))</td>
+  </tr>
+  <tr style="border: 1px solid grey;">
+    <td>**User's real view direction**</td>
+    <td> _dir_real_</td>
+    <td>Compass heading (in °) of the magnetic compass sensor of the device 
+    hold by the user while pressing the "O.K."-button in a mark-view-direction or adopt-view-direction task; 0° = N, 180° = S</td>
+  </tr>
+  <tr style="border: 1px solid grey;">
+    <td>**User's clicked view direction**</td>
+    <td> _dir_click_</td>
+    <td>View direction (in °) marked by the user on the map determined by
+    [using the clicked location on the map and the location of the arrow marker](https://github.com/origami-team/origami/blob/master/src/app/pages/play-game/playing-game/playing-game.page.ts#L468-L474) 
+    (of the game settings) in a mark-view-direction
+    task (see: MapTouchEvent [mapbox](https://docs.mapbox.com/mapbox-gl-js/api/))</td>
+  </tr>
+  <tr style="border: 1px solid grey;">
+    <td>**Direction of the arrow on the map**</td>
+    <td> _dir_marked_</td>
+    <td>Direction (in °) of in arrow marker on the map (task settings) in an adopt-view-direction task</td>
+  </tr>
+</table>

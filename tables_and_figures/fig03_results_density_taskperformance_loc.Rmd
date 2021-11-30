@@ -1,0 +1,237 @@
+<!-- Fig. 3: Density plots for the Location Task performance -->
+
+<table style="width: 100%; border-collapse: collapse; border: 1px solid grey; text-align: center;">
+  <colgroup>
+    <col span="1" style="background-color:lightgrey; border: 1px solid grey;">
+    <col span="2" style="border: 1px solid grey; width: 50%">
+  </colgroup>
+  <tr style="background-color:lightgrey; border: 1px solid grey;">
+    <td></td>
+    <td><center> **Accuracy Data** </center></td>
+    <td><center> **Process Data** </center></td>
+  </tr>
+  <tr style="border: 1px solid grey;">
+    <td><center>**Self-Location Tasks**</center></td>
+    <td>
+```{r plot self-location task performance{{z}}-1, message=FALSE, echo=FALSE}
+plot_LOC1 <- data.frame("distance"=locationtasks_raw$LOC1)
+plot_LOC2 <- data.frame("distance"=locationtasks_raw$LOC2)
+plot_LOC3 <- data.frame("distance"=locationtasks_raw$LOC3)
+plot_LOC4 <- data.frame("distance"=locationtasks_raw$LOC4)
+plot_LOC5 <- data.frame("distance"=locationtasks_raw$LOC5)
+plot_LOC6 <- data.frame("distance"=locationtasks_raw$LOC6)
+plot_LOCall{{z}} <- rbind(plot_LOC1, plot_LOC2, plot_LOC3, plot_LOC4, plot_LOC5, plot_LOC6)
+
+plot_LOC1r <- data.frame("distance"=locationtasks_raw$LOC1r)
+plot_LOC2r <- data.frame("distance"=locationtasks_raw$LOC2r)
+plot_LOC3r <- data.frame("distance"=locationtasks_raw$LOC3r)
+plot_LOC4r <- data.frame("distance"=locationtasks_raw$LOC4r)
+plot_LOC5r <- data.frame("distance"=locationtasks_raw$LOC5r)
+plot_LOC6r <- data.frame("distance"=locationtasks_raw$LOC6r)
+plot_LOCrall{{z}} <- rbind(plot_LOC1r, plot_LOC2r, plot_LOC3r, plot_LOC4r, plot_LOC5r, plot_LOC6r)
+
+ui_loc{{z}} <- fluidPage(
+  selectInput("loc", label = "Choose Accuracy Data:",
+            choices = c("With GPS inaccuracy",
+                        "Without GPS inaccuracy"), 
+            selected = "With GPS inaccuracy"),
+  plotOutput("plot_loc{{z}}", height = "250px"),
+)
+
+server_loc{{z}} <- function(input, output) {
+  
+  output$plot_loc{{z}} <- renderPlot({
+
+    # task choice
+    
+    if(input$loc=="With GPS inaccuracy"){
+      plot_LOC <- plot_LOCall{{z}}
+      } else {
+      plot_LOC <- plot_LOCrall{{z}}
+      }
+      
+    # show plot
+    
+     ggplot(plot_LOC, aes(x=distance)) + 
+      geom_histogram(aes(y=..density..),
+                     colour="black", fill="white", bins=30) +
+      geom_density(alpha=.2, fill="#3880ff") +
+      xlab("distance (in m)")
+      
+  }, height = 250)
+}
+
+shinyApp(ui_loc{{z}}, server_loc{{z}}, options = list(height = 330))
+```
+    </td>
+    <td>
+```{r plot panning and zooming performance{{z}}-2, message=FALSE, echo=FALSE}
+plot_PAN1 <- data.frame("pannings"=locationtasks_raw$locpan1)
+plot_PAN2 <- data.frame("pannings"=locationtasks_raw$locpan2)
+plot_PAN3 <- data.frame("pannings"=locationtasks_raw$locpan3)
+plot_PAN4 <- data.frame("pannings"=locationtasks_raw$locpan4)
+plot_PAN5 <- data.frame("pannings"=locationtasks_raw$locpan5)
+plot_PAN6 <- data.frame("pannings"=locationtasks_raw$locpan6)
+plot_PANall{{z}} <- rbind(plot_PAN1, plot_PAN2, plot_PAN3, plot_PAN4, plot_PAN5, plot_PAN6)
+
+plot_ZOOM1 <- data.frame("zoomings"=locationtasks_raw$loczoom1)
+plot_ZOOM2 <- data.frame("zoomings"=locationtasks_raw$loczoom2)
+plot_ZOOM3 <- data.frame("zoomings"=locationtasks_raw$loczoom3)
+plot_ZOOM4 <- data.frame("zoomings"=locationtasks_raw$loczoom4)
+plot_ZOOM5 <- data.frame("zoomings"=locationtasks_raw$loczoom5)
+plot_ZOOM6 <- data.frame("zoomings"=locationtasks_raw$loczoom6)
+plot_ZOOMall{{z}} <- rbind(plot_ZOOM1, plot_ZOOM2, plot_ZOOM3, plot_ZOOM4, plot_ZOOM5, plot_ZOOM6)
+
+ui_loczoompan{{z}} <- fluidPage(
+  selectInput("loczoompan", label = "Choose Process Data:",
+            choices = c("Zooming","Panning"), selected = "Panning"),
+  plotOutput("plot_loczoompan{{z}}", height = "250px"),
+)
+
+server_loczoompan{{z}} <- function(input, output) {
+  
+  output$plot_loczoompan{{z}} <- renderPlot({
+
+    # task choice
+    
+    if(input$loczoompan=="Zooming"){
+      plot_loczoompan <- plot_ZOOMall{{z}}
+      } else {
+      plot_loczoompan <- plot_PANall{{z}}
+      }
+      
+    # show plot
+    
+    ggplot(plot_loczoompan, aes(
+      if(input$loczoompan=="Zooming"){
+      x=zoomings
+      } else {
+      x=pannings
+      }
+      )) + 
+      geom_histogram(aes(y=..density..),
+                     colour="black", fill="white", bins=30) +
+      geom_density(alpha=.2, fill="#3880ff") +
+      xlab(
+        if(input$loczoompan=="Zooming"){
+        "number of zoomings"
+        } else {
+        "number of pannings"
+        }
+      )
+
+  }, height = 250)
+}
+
+shinyApp(ui_loczoompan{{z}}, server_loczoompan{{z}}, options = list(height = 330))
+```
+    </td>
+  </tr>
+  <tr style="border: 1px solid grey;">
+    <td><center>**Navigation-to-a-flag Tasks**</center></td>
+    <td>
+```{r plot navigation-to-a-flag task performance{{z}}-1, message=FALSE, echo=FALSE}
+plot_LNV1 <- data.frame("distance"=locationtasks_raw$LNV1)
+plot_LNV2 <- data.frame("distance"=locationtasks_raw$LNV2)
+plot_LNV3 <- data.frame("distance"=locationtasks_raw$LNV3)
+plot_LNV4 <- data.frame("distance"=locationtasks_raw$LNV4)
+plot_LNV5 <- data.frame("distance"=locationtasks_raw$LNV5)
+plot_LNV6 <- data.frame("distance"=locationtasks_raw$LNV6)
+plot_LNVall{{z}} <- rbind(plot_LNV1, plot_LNV2, plot_LNV3, plot_LNV4, plot_LNV5, plot_LNV6)
+
+plot_LNV1r <- data.frame("distance"=locationtasks_raw$LNV1r)
+plot_LNV2r <- data.frame("distance"=locationtasks_raw$LNV2r)
+plot_LNV3r <- data.frame("distance"=locationtasks_raw$LNV3r)
+plot_LNV4r <- data.frame("distance"=locationtasks_raw$LNV4r)
+plot_LNV5r <- data.frame("distance"=locationtasks_raw$LNV5r)
+plot_LNV6r <- data.frame("distance"=locationtasks_raw$LNV6r)
+plot_LNVrall{{z}} <- rbind(plot_LNV1r, plot_LNV2r, plot_LNV3r, plot_LNV4r, plot_LNV5r, plot_LNV6r)
+
+ui_lnv{{z}} <- fluidPage(
+  selectInput("lnv", label = "Choose Accuracy Data:",
+            choices = c("With GPS inaccuracy",
+                        "Without GPS inaccuracy"), 
+            selected = "With GPS inaccuracy"),
+  plotOutput("plot_lnv{{z}}", height = "250px"),
+)
+
+server_lnv{{z}} <- function(input, output) {
+  
+  output$plot_lnv{{z}} <- renderPlot({
+
+    # task choice
+    
+    if(input$lnv=="With GPS inaccuracy"){
+      plot_LNV <- plot_LNVall{{z}}
+      } else {
+      plot_LNV <- plot_LNVrall{{z}}
+      }
+      
+    # show plot
+    
+    ggplot(plot_LNV, aes(x=distance)) + 
+      geom_histogram(aes(y=..density..),
+                     colour="black", fill="white", bins=30) +
+      geom_density(alpha=.2, fill="#3880ff") +
+      xlab("distance (in m)")
+      
+  }, height = 250)
+}
+
+shinyApp(ui_lnv{{z}}, server_lnv{{z}}, options = list(height = 330))
+```
+  </td>
+  <td>
+```{r plot route length performance{{z}}, echo = FALSE, message=FALSE, echo=FALSE}
+plot_ROUTE1{{z}} <- data.frame("route"=locationtasks_raw$lnvroute1)
+plot_ROUTE2{{z}} <- data.frame("route"=locationtasks_raw$lnvroute2)
+plot_ROUTE3{{z}} <- data.frame("route"=locationtasks_raw$lnvroute3)
+plot_ROUTE4{{z}} <- data.frame("route"=locationtasks_raw$lnvroute4)
+plot_ROUTE5{{z}} <- data.frame("route"=locationtasks_raw$lnvroute5)
+plot_ROUTE6{{z}} <- data.frame("route"=locationtasks_raw$lnvroute6)
+
+ui_route{{z}} <- fluidPage(
+  selectInput("task", label = "Choose task number:",
+            choices = c(1:6), selected = 1),
+  plotOutput("plot_route{{z}}", height = "250px"),
+)
+
+server_route{{z}} <- function(input, output) {
+  
+  output$plot_route{{z}} <- renderPlot({
+
+    # task choice
+    
+    if(input$task==1){
+      plot_ROUTE <- plot_ROUTE1{{z}}
+      } else {
+      if(input$task==2){
+      plot_ROUTE <- plot_ROUTE2{{z}}
+      } else {
+      if(input$task==3){
+      plot_ROUTE <- plot_ROUTE3{{z}}
+      } else {
+      if(input$task==4){
+      plot_ROUTE <- plot_ROUTE4{{z}}
+      } else {
+      if(input$task==5){
+      plot_ROUTE <- plot_ROUTE5{{z}}
+      } else {
+      plot_ROUTE <- plot_ROUTE6{{z}}
+      }}}}}
+      
+    # show plot
+    
+    ggplot(plot_ROUTE, aes(x=route)) + 
+      geom_histogram(aes(y=..density..), colour="black", fill="white", bins=30) +
+      geom_density(alpha=.2, fill="#3880ff") +
+      xlab("route length (in m)")
+      
+  }, height = 250)
+}
+
+shinyApp(ui_route{{z}}, server_route{{z}}, options = list(height = 330))
+```
+    </td>
+  </tr>
+</table>

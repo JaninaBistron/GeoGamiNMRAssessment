@@ -1,0 +1,31 @@
+<!-- Tab. 2: Waypoint Data -->
+
+<table style="width: 100%; border-collapse: collapse; border: 1px solid grey; text-align: center;">
+  <colgroup>
+    <col span="1" style="background-color:lightgrey; border: 1px solid grey;">
+    <col span="2" style=" border: 1px solid grey;">
+  </colgroup>
+  <tr style="background-color:lightgrey; border: 1px solid grey;">
+    <td>**Data**</td>
+    <td>**Variable names**</td>
+    <td>**Description**</td>
+  </tr>
+  <tr style="border: 1px solid grey;">
+    <td>**User's locations**</td>
+    <td> _longitude, latitude_</td>
+    <td>Geographic location from the GPS sensor of the device hold by the user 
+        while walking around (additionally determined: GPS accuracy, variable name: _accuracy_)</td>
+  </tr>
+  <tr style="border: 1px solid grey;">
+    <td>**User's view direction/tablet orientation**</td>
+    <td> _compass_</td>
+    <td>Compass heading (in °) of the magnetic compass sensor 
+        of the device hold by the user while walking around; 0° = N, 180° = S</td>
+  </tr>
+  <tr style="border: 1px solid grey;">
+    <td>**User's velocity**</td>
+    <td> _speed_</td>
+    <td>Speed (in m/s) from the GPS sensor of the device hold by the user while walking around 
+    (determined via Doppler effect)</td>
+  </tr>
+</table>

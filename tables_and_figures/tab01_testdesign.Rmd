@@ -1,0 +1,324 @@
+<!-- Tab. 1: Test Design -->
+
+<table style="width: 100%; border-collapse: collapse; border: 1px solid grey; text-align: center;">
+  <colgroup>
+    <col span="1" style="background-color:lightgrey; border: 1px solid grey;">
+    <col span="2" style=" border: 1px solid grey;">
+  </colgroup>
+  
+  <tr style="background-color:lightgrey; border: 1px solid grey;">
+    <td></td>
+    <td>**Task type**</td>
+    <td>**Moving/view direction**</td>
+    <td>**Task and map settings**</td>
+  </tr>
+  
+  <tr style="border: 1px solid grey;">
+    <td>Transition Task<br>at location 1</td>
+    <td>Information: "You are here!" <br> (user sees his/her location on the map)</td>
+    <td></td>
+    <td>Zoom to whole game <br> Location-marker</td>
+  </tr>
+  
+  <tr style="border: 1px solid grey;">
+    <td>**Task 1a**<br>to location 1a</td>
+    <td>**Navigation-to-a-flag**</td>
+    <td>North</td>
+    <td>Zoom to task</td>
+  </tr>
+  
+  <tr style="border: 1px solid grey;">
+    <td>Transition Task<br>to location 1</td>
+    <td>Navigation-with-an-arrow</td>
+    <td></td>
+    <td></td>
+  </tr>
+  
+  <tr style="border: 1px solid grey;">
+    <td>Transition Task<br>at location 1</td>
+    <td>Information: "You are here!" <br> (user sees his/her location on the map)</td>
+    <td></td>
+    <td>Zoom to whole game <br> Location-marker</td>
+  </tr>
+  
+  <tr style="border: 1px solid grey;">
+    <td>**Task 1b**<br>to location 1b</td>
+    <td>**Navigation-to-a-flag**</td>
+    <td>North</td>
+    <td>Zoom to task</td>
+  </tr>
+  
+  <tr style="border: 1px solid grey;">
+    <td>Transition Task<br>to location 2a</td>
+    <td>Navigation-with-an-arrow</td>
+    <td>North</td>
+    <td></td>
+  </tr>
+  
+  <tr style="border: 1px solid grey;">
+    <td>**Task 2a**<br>at location 2a</td>
+    <td>**Self-location**</td>
+    <td>North</td>
+    <td>Zoom to task</td>
+  </tr>
+  
+  <tr style="border: 1px solid grey;">
+    <td>Transition Task<br>to location 2b</td>
+    <td>Navigation-with-an-arrow</td>
+    <td>North</td>
+    <td></td>
+  </tr>
+  
+  <tr style="border: 1px solid grey;">
+    <td>**Task 2b**<br>at location 2b</td>
+    <td>**Self-location**</td>
+    <td>North</td>
+    <td>Zoom to task</td>
+  </tr>
+  
+  <tr style="border: 1px solid grey;">
+    <td>Transition Task<br>to location 3</td>
+    <td>Navigation-with-an-arrow</td>
+    <td></td>
+    <td></td>
+  </tr>
+  
+  <tr style="border: 1px solid grey;">
+    <td>Transition Task<br>at location 3</td>
+    <td>Turn-with-an-arrow</td>
+    <td>North</td>
+    <td></td>
+  </tr>
+  
+  <tr style="border: 1px solid grey;">
+    <td>**Task 3a**<br>at location 3</td>
+    <td>**Mark-view-direction**</td>
+    <td>North</td>
+    <td>Zoom to task <br> Location-marker</td>
+  </tr>
+  
+  <tr style="border: 1px solid grey;">
+    <td>Transition Task<br>at location 3</td>
+    <td>Turn-with-an-arrow</td>
+    <td>South</td>
+    <td></td>
+  </tr>
+  
+  <tr style="border: 1px solid grey;">
+    <td>**Task 3b**<br>at location 3</td>
+    <td>**Mark-view-direction**</td>
+    <td>South</td>
+    <td>Zoom to task <br> Location-marker</td>
+  </tr>
+  
+  <tr style="border: 1px solid grey;">
+    <td>**Task 3c**<br>at location 3</td>
+    <td>**Adopt-view-direction**</td>
+    <td>West</td>
+    <td>Zoom to task <br> Location-marker</td>
+  </tr>
+  
+  <tr style="border: 1px solid grey;">
+    <td>**Task 3d**<br>at location 3</td>
+    <td>**Adopt-view-direction**</td>
+    <td>East</td>
+    <td>Zoom to task <br> Location-marker</td>
+  </tr>
+
+  <tr style="border: 1px solid grey;">
+    <td>Transition Task<br>to location 4</td>
+    <td>Navigation-with-an-arrow</td>
+    <td></td>
+    <td></td>
+  </tr>
+  
+  <tr style="border: 1px solid grey;">
+    <td>Transition Task<br>at location 4</td>
+    <td>Information: "You are here!" <br> (user sees his/her location on the map)</td>
+    <td></td>
+    <td>Zoom to whole game <br> Location-marker</td>
+  </tr>
+  
+  <tr style="border: 1px solid grey;">
+    <td>**Task 4a**<br>to location 4a</td>
+    <td>**Navigation-to-a-flag**</td>
+    <td>West or East</td>
+    <td>Zoom to task</td>
+  </tr>
+  
+  <tr style="border: 1px solid grey;">
+    <td>Transition Task<br>to location 4</td>
+    <td>Navigation-with-an-arrow</td>
+    <td></td>
+    <td></td>
+  </tr>
+  
+  <tr style="border: 1px solid grey;">
+    <td>Transition Task<br>at location 4</td>
+    <td>Information: "You are here!" <br> (user sees his/her location on the map)</td>
+    <td></td>
+    <td>Zoom to whole game <br> Location-marker</td>
+  </tr>
+  
+  <tr style="border: 1px solid grey;">
+    <td>**Task 4b**<br>to location 4b</td>
+    <td>**Navigation-to-a-flag**</td>
+    <td>West or East</td>
+    <td>Zoom to task</td>
+  </tr>
+  
+  <tr style="border: 1px solid grey;">
+    <td>Transition Task<br>to location 5a</td>
+    <td>Navigation-with-an-arrow</td>
+    <td>West or East</td>
+    <td></td>
+  </tr>
+  
+  <tr style="border: 1px solid grey;">
+    <td>**Task 5a**<br>at location 5a</td>
+    <td>**Self-Location**</td>
+    <td>West or East</td>
+    <td>Zoom to task</td>
+  </tr>
+  
+  <tr style="border: 1px solid grey;">
+    <td>Transition Task<br>to location 5b</td>
+    <td>Navigation-with-an-arrow</td>
+    <td>West or East</td>
+    <td></td>
+  </tr>
+  
+  <tr style="border: 1px solid grey;">
+    <td>**Task 5b**<br>at location 5b</td>
+    <td>**Self-Location**</td>
+    <td>West or East</td>
+    <td>Zoom to task</td>
+  </tr>
+
+  <tr style="border: 1px solid grey;">
+    <td>Transition Task<br>to location 6</td>
+    <td>Navigation-with-an-arrow</td>
+    <td></td>
+    <td></td>
+  </tr>
+  
+  <tr style="border: 1px solid grey;">
+    <td>Transition Task<br>at location 6</td>
+    <td>Turn-with-an-arrow</td>
+    <td>North</td>
+    <td></td>
+  </tr>
+  
+  <tr style="border: 1px solid grey;">
+    <td>**Task 6a**<br>at location 6</td>
+    <td>**Mark-view-direction**</td>
+    <td>North</td>
+    <td>Zoom to task <br> Location-marker</td>
+  </tr>
+  
+  <tr style="border: 1px solid grey;">
+    <td>Transition Task<br>at location 6</td>
+    <td>Turn-with-an-arrow</td>
+    <td>South</td>
+    <td></td>
+  </tr>
+  
+  <tr style="border: 1px solid grey;">
+    <td>**Task 6b**<br>at location 6</td>
+    <td>**Mark-view-direction**</td>
+    <td>South</td>
+    <td>Zoom to task <br> Location-marker</td>
+  </tr>
+  
+  <tr style="border: 1px solid grey;">
+    <td>**Task 6c**<br>at location 6</td>
+    <td>**Adopt-view-direction**</td>
+    <td>West</td>
+    <td>Zoom to task <br> Location-marker</td>
+  </tr>
+  
+  <tr style="border: 1px solid grey;">
+    <td>**Task 6d**<br>at location 6</td>
+    <td>**Adopt-view-direction**</td>
+    <td>East</td>
+    <td>Zoom to task <br> Location-marker</td>
+  </tr>
+  
+  <tr style="border: 1px solid grey;">
+    <td>Transition Task<br>to location 7</td>
+    <td>Navigation-with-an-arrow</td>
+    <td></td>
+    <td></td>
+  </tr>
+
+  <tr style="border: 1px solid grey;">
+    <td>Transition Task<br>at location 7</td>
+    <td>Information: "You are here!" <br> (user sees his/her location on the map)</td>
+    <td></td>
+    <td>Zoom to whole game <br> Location-marker</td>
+  </tr>
+  
+  <tr style="border: 1px solid grey;">
+    <td>**Task 7a**<br>to location 7a</td>
+    <td>**Navigation-to-a-flag**</td>
+    <td>South</td>
+    <td>Zoom to task</td>
+  </tr>
+  
+  <tr style="border: 1px solid grey;">
+    <td>Transition Task<br>to location 7</td>
+    <td>Navigation-with-an-arrow</td>
+    <td></td>
+    <td></td>
+  </tr>
+  
+  <tr style="border: 1px solid grey;">
+    <td>Transition Task<br>at location 7</td>
+    <td>Information: "You are here!" <br> (user sees his/her location on the map)</td>
+    <td></td>
+    <td>Zoom to whole game <br> Location-marker</td>
+  </tr>
+  
+  <tr style="border: 1px solid grey;">
+    <td>**Task 7b**<br>to location 7b</td>
+    <td>**Navigation-to-a-flag**</td>
+    <td>South</td>
+    <td>Zoom to task</td>
+  </tr>
+  
+  <tr style="border: 1px solid grey;">
+    <td>Transition Task<br>to location 8a</td>
+    <td>Navigation-with-an-arrow</td>
+    <td>South</td>
+    <td></td>
+  </tr>
+  
+  <tr style="border: 1px solid grey;">
+    <td>**Task 8a**<br>at location 8a</td>
+    <td>**Self-location**</td>
+    <td>South</td>
+    <td>Zoom to task</td>
+  </tr>
+  
+  <tr style="border: 1px solid grey;">
+    <td>Transition Task<br>to location 8b</td>
+    <td>Navigation-with-an-arrow</td>
+    <td>South</td>
+    <td></td>
+  </tr>
+  
+  <tr style="border: 1px solid grey;">
+    <td>**Task 8b**<br>at location 8b</td>
+    <td>**Self-location**</td>
+    <td>South</td>
+    <td>Zoom to task</td>
+  </tr>
+  
+  <tr style="border: 1px solid grey;">
+    <td>End of the game<br>at location 8b</td>
+    <td>Information: "You've found the treasure!"</td>
+    <td></td>
+    <td></td>
+  </tr>
+  
+</table>

@@ -1,0 +1,168 @@
+<!-- Fig. 2: Plot Results Waypoint Data -->
+
+```{r shiny app - plot waypoint data{{z}}, echo=FALSE}
+# calculate participants' waypoint data ----------------------------------------------------------------------
+for (n in 1:participants){
+    # create name for each participant's waypointdata
+    name <- paste("waypoints_shiny", z, n, sep = "")
+    # create data.frame with that name
+    assign(name, sf::st_as_sf(logfile$waypoints[[n]], coords=c("longitude","latitude"), crs=4326))
+}
+
+# collect data on location for different tasks ("correct" and participants' answers)  ------------------------
+
+  # LOCATION TASKS: LOC
+    for (n in 1:participants){
+      # filter data for each participant
+      wayp_tasks <- dplyr::filter(logfile$events[[n]], eventtype == "ON_OK_CLICKED")
+      wayp_tasks_loc <- dplyr::filter(wayp_tasks, tasktype == "theme-loc", !is.na(distance_real_click))
+      # CORRECT ANSWERS
+        # create name for each participant
+        name <- paste("wayp_tasks_loc_real", z, n, sep = "")
+        # create data.frame with that name
+        assign(name, sf::st_as_sf(wayp_tasks_loc, coords=c("longitude_real","latitude_real"), crs=4326))
+      # PARTICIPANTS' REAL ANSWERS
+        # create name for each participant
+        name <- paste("wayp_tasks_loc_click", z, n, sep = "")
+        # create data.frame with that name
+        if (
+            !is.na(wayp_tasks_loc$latitude_click[1]) 
+            & !is.na(wayp_tasks_loc$latitude_click[2])
+            & !is.na(wayp_tasks_loc$latitude_click[3])
+            & !is.na(wayp_tasks_loc$latitude_click[4])
+            & !is.na(wayp_tasks_loc$latitude_click[5])
+            & !is.na(wayp_tasks_loc$latitude_click[6])
+            ){
+          assign(name, sf::st_as_sf(wayp_tasks_loc, coords=c("longitude_click","latitude_click"), crs=4326))
+        }
+      # LINES BETWEEN CORRECT AND REAL ANSWERS
+        # prepare waypoint data
+        wayp_tasks_loc_real <- wayp_tasks_loc[10:11]
+        wayp_tasks_loc_click <- wayp_tasks_loc[13:14]
+        names(wayp_tasks_loc_real)[names(wayp_tasks_loc_real)=="longitude_real"] <- "long"
+        names(wayp_tasks_loc_real)[names(wayp_tasks_loc_real)=="latitude_real"] <- "lat"
+        names(wayp_tasks_loc_click)[names(wayp_tasks_loc_click)=="longitude_click"] <- "long"
+        names(wayp_tasks_loc_click)[names(wayp_tasks_loc_click)=="latitude_click"] <- "lat"
+        # create 6 data.frame names - one data.frame for each task
+        for (a in 1:6){
+          name <- paste("wayp_tasks_loc_line", z, n, a, sep = "")
+          assign(name, cbind(wayp_tasks_loc_real[a,], wayp_tasks_loc_click[a,]))
+          
+          # bind both rows of each data sets (correct & real) per each task in one data.frame
+          #assign(name, cbind(sf::st_as_sf(wayp_tasks_loc_real[a,], coords=c("long","lat"), crs=4326),
+                            #sf::st_as_sf(wayp_tasks_loc_click[a,], coords=c("long","lat"), crs=4326)))
+        }
+    }
+  
+  # LOCATION TASKS: LNV
+    # CORRECT ANSWERS
+      wayp_tasks{{z}} <- dplyr::filter(logfile$events[[1]], eventtype == "ON_OK_CLICKED")
+      wayp_tasks_lnv_marked{{z}} <- dplyr::filter(wayp_tasks{{z}}, tasktype == "nav-flag")
+      wayp_tasks_lnv_marked{{z}} <- sf::st_as_sf(wayp_tasks_lnv_marked{{z}}, coords=c("longitude_marked","latitude_marked"), crs=4326)
+    # PARTICIPANTS' REAL ANSWERS
+      for (n in 1:participants){
+        wayp_tasks <- dplyr::filter(logfile$events[[n]], eventtype == "ON_OK_CLICKED")
+        wayp_tasks_lnv <- dplyr::filter(wayp_tasks, tasktype == "nav-flag")
+        # create name for each participant
+        name <- paste("wayp_tasks_lnv_real", z, n, sep = "")
+        # create data.frame with that name
+        # assign(name, sf::st_as_sf(wayp_tasks_lnv, coords=c("longitude_real","latitude_real"), crs=4326))
+        assign(name, sf::st_as_sf(wayp_tasks_lnv, coords=c("longitude_real","latitude_real"), crs=4326))
+      }
+    
+  # DIRECTION TASKS
+  # wayp_tasks_dir{{z}} <- dplyr::filter(wayp_tasks{{z}}, tasktype == "theme-direction"  &  questiontype != "MAP_DIRECTION")
+  # wayp_tasks_dir{{z}} <- sf::st_as_sf(wayp_tasks_dir{{z}}, coords=c("longitude_real","latitude_real"), crs=4326)
+    
+# create icons -----------------------------------------------------------------------------------------------
+loc_marker <- makeIcon(
+  iconUrl = "https://raw.githubusercontent.com/origami-team/origami/master/src/assets/icons/marker-editor.png",
+  iconWidth = 20, iconHeight = 20,
+  iconAnchorX = 10, iconAnchorY = 20,
+)
+loc_marker_green <- makeIcon(
+  iconUrl = "https://raw.githubusercontent.com/origami-team/origami/master/src/assets/icons/marker-editor-solution.png",
+  iconWidth = 20, iconHeight = 20,
+  iconAnchorX = 10, iconAnchorY = 20,
+)
+lnv_marker <- makeIcon(
+  iconUrl = "https://raw.githubusercontent.com/origami-team/origami/master/src/assets/icons/target-flag.png",
+  iconWidth = 20, iconHeight = 20,
+  iconAnchorX = 4, iconAnchorY = 20,
+)
+lnv_marker_green <- makeIcon(
+  iconUrl = "https://raw.githubusercontent.com/origami-team/origami/master/src/assets/icons/target-flag-solution.png",
+  iconWidth = 20, iconHeight = 20,
+  iconAnchorX = 4, iconAnchorY = 20,
+)
+# dir_marker <- makeIcon(
+#   iconUrl = "https://raw.githubusercontent.com/origami-team/origami/master/src/assets/icons/directionv2.png",
+#   iconWidth = 20, iconHeight = 20,
+#   iconAnchorX = 0, iconAnchorY = 20,
+# )
+
+# Shiny UI --------------------------------------------------------------------------------------------------
+
+ui_wayp{{z}} <- fluidPage(
+  mainPanel( 
+    leafletOutput("map{{z}}"), 
+    absolutePanel(top = 5, right = 20, 
+      selectInput("participant", label = "Choose participant:", choices = c(1:participants), selected = 1, width = "140px"),
+    )
+  )
+)
+
+# Shiny Server -----------------------------------------------------------------------------------------------
+
+server_wayp{{z}} <- function(input, output) {
+  
+  selectWayp <- reactive({get(paste("waypoints_shiny", {{z}}, input$participant, sep = ""))})
+  selectCompass <- reactive({get(paste("waypoints_shiny", {{z}}, input$participant, sep = ""))}$compass)
+  selectLocTasks_real <- reactive({get(paste("wayp_tasks_loc_real", {{z}}, input$participant, sep = ""))})
+  selectLocTasks_click <- reactive({get(paste("wayp_tasks_loc_click", {{z}}, input$participant, sep = ""))})
+  selectLnvTasks_real <- reactive({get(paste("wayp_tasks_lnv_real", {{z}}, input$participant, sep = ""))})
+  selectLocLines_task1 <- reactive({get(paste("wayp_tasks_loc_line", {{z}}, input$participant, 1, sep = ""))})
+  selectLocLines_task2 <- reactive({get(paste("wayp_tasks_loc_line", {{z}}, input$participant, 2, sep = ""))})
+  selectLocLines_task3 <- reactive({get(paste("wayp_tasks_loc_line", {{z}}, input$participant, 3, sep = ""))})
+  selectLocLines_task4 <- reactive({get(paste("wayp_tasks_loc_line", {{z}}, input$participant, 4, sep = ""))})
+  selectLocLines_task5 <- reactive({get(paste("wayp_tasks_loc_line", {{z}}, input$participant, 5, sep = ""))})
+  selectLocLines_task6 <- reactive({get(paste("wayp_tasks_loc_line", {{z}}, input$participant, 6, sep = ""))})
+  
+  #create the map
+  output$map{{z}} <- renderLeaflet({
+    
+    pal <- colorFactor(
+      palette = c('red'),
+      domain = selectCompass()
+    )
+    
+    leaflet() %>%
+      # OSM map
+      addTiles() %>% 
+      # plot data of each participant
+      addCircleMarkers(data=selectWayp(), radius=0.05, color=~pal(selectCompass()), 
+                       fillColor=~pal(selectCompass()), fillOpacity=1, opacity=0) %>%
+      #addMarkers(data=selectWayp(), icon = loc_marker, markerOptions(rotationAngle=selectCompass()) )%>%
+      # plot task types marker
+      # LNV
+        addMarkers(data=wayp_tasks_lnv_marked{{z}}, icon = lnv_marker_green) %>%
+        addMarkers(data=selectLnvTasks_real(), icon = lnv_marker) %>%
+      # LOC
+        addMarkers(data=selectLocTasks_real(), icon = loc_marker_green) %>% 
+        addMarkers(data=selectLocTasks_click(), icon = loc_marker) %>%
+        addPolylines(data=selectLocLines_task1(), lng = ~long, lat = ~lat, color="black")
+        # addPolylines(data=selectLocLines_task2(), color="red") %>%
+        # addPolylines(data=selectLocLines_task3(), color="red") %>%
+        # addPolylines(data=selectLocLines_task4(), color="red") %>%
+        # addPolylines(data=selectLocLines_task5(), color="red") %>%
+        # addPolylines(data=selectLocLines_task6(), color="red")
+      # DM and DA
+        # addMarkers(data=wayp_tasks_dir{{z}}, icon = dir_marker)
+  })
+  
+}
+
+# Shiny App -------------------------------------------------------------------------------------------------
+shinyApp(ui_wayp{{z}}, server_wayp{{z}}) 
+
+```

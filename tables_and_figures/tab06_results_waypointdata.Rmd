@@ -1,0 +1,21 @@
+<!-- Tab. 6: Results Waypoint Data -->
+
+```{r shiny app - show results waypoint data{{z}}, echo=FALSE}
+waypointshiny{{z}} <- logfile$waypoints
+# delete time stamps
+for (n in 1:participants){
+  waypointshiny{{z}}[[n]] <- select(waypointshiny{{z}}[[n]], -timestamp)
+}
+# Shiny UI --------------------------------------------------------------------------------------------------
+ui_w{{z}} <- fluidPage(
+  selectInput("input_participant", label = "Choose participant:", choices = c(1:participants), selected = 1, 
+                       width = "140px"),
+  div(tableOutput("values_w{{z}}"), style = "font-size: 80%"),
+)
+# Shiny Server ----------------------------------------------------------------------------------------------
+server_w{{z}} <- function(input, output) {
+  selectValues <- reactive({waypointshiny{{z}}[[as.numeric(input$input_participant)]]})
+  output$values_w{{z}} <- renderTable({selectValues()}, bordered=TRUE, digits=5)
+}
+# Shiny App --------------------------------------------------------------------------------------------------
+shinyApp(ui_w{{z}}, server_w{{z}})

@@ -1,0 +1,93 @@
+<!-- Fig. 6: Validity -->
+
+```{r scale function{{z}}-1, message=FALSE, echo=FALSE}
+# function that sets limits of the scale (for all plots)
+set_breaks = function(limits) {
+     seq(limits[1], limits[2], by = 1)
+}
+```
+
+<table style="width: 100%; border-collapse: collapse; border: 1px solid grey; text-align: center;">
+  <colgroup>
+    <col span="1" style="background-color:lightgrey; border: 1px solid grey;">
+    <col span="2" style="border: 1px solid grey;">
+  </colgroup>
+  <tr style="background-color:lightgrey; border: 1px solid grey;">
+    <td></td>
+    <td>**for Accuracy Data**<br>**_without_ Process Data**</td>
+    <td>**for Accuracy Data**<br>**_with_ Process Data**</td>
+    <td>**for Accuracy Data**<br>**_with_ Process Data**<br>**_excl._ dropped tasks**</td>
+  </tr>
+  <tr style="border: 1px solid grey;">
+    <td>**Only Location Tasks**</td>
+    <td>`r format(round(cor_valid_loc_r,2), nsmall=2)`<br>
+    <i>`r signif(cor_valid_loc_r_p,digits=3)`</i>
+```{r plot validation correlation{{z}}-1, message=FALSE, echo=FALSE}
+ggplot(data = totalscore, aes(x = sumloc_r, y = expertscoring)) +
+   geom_count(color='black', ) +
+   geom_smooth(method='lm', color='#3880ff', formula = y ~ x) +
+   xlab("OriGami NMR Test Scoring") +
+   ylab("Expert Scoring") +
+   scale_size_continuous(breaks = set_breaks, range = c(2,3))
+```
+    </td>
+    <td>`r format(round(cor_valid_loc_c,2), nsmall=2)`<br>
+    <i>`r signif(cor_valid_loc_c_p,digits=3)`</i>
+```{r plot validation correlation{{z}}-4, message=FALSE, echo=FALSE}
+ggplot(data = totalscore, aes(x = sumloc_c, y = expertscoring)) +
+  geom_count(color='black') + 
+  geom_smooth(method='lm', color='#3880ff', formula = y ~ x) +
+  xlab("OriGami NMR Test Scoring") + 
+  ylab("Expert Scoring") +
+  scale_size_continuous(breaks = set_breaks, range = c(2,3))
+```
+    </td>
+    <td>`r format(round(cor_valid_loc_c_drop,2), nsmall=2)`<br>
+    <i>`r signif(cor_valid_loc_c_drop_p,digits=3)`</i>
+```{r plot validation correlation{{z}}-7, message=FALSE, echo=FALSE}
+ggplot(data = totalscore_drop, aes(x = sumloc_c, y = expertscoring)) +
+  geom_count(color='black') + 
+  geom_smooth(method='lm', color='#3880ff', formula = y ~ x) +
+  xlab("OriGami NMR Test Scoring") + 
+  ylab("Expert Scoring") +
+  scale_size_continuous(breaks = set_breaks, range = c(2,3))
+```
+    </td>
+  </tr>
+  <tr style="border: 1px solid grey;">
+    <td>**All Tasks**</td>
+    <td>`r format(round(cor_valid_total_r,2), nsmall=2)`<br>
+    <i>`r signif(cor_valid_total_r_p,digits=3)`</i>
+```{r plot validation correlation{{z}}-3, message=FALSE, echo=FALSE}
+ggplot(data = totalscore, aes(x = sumtotal_r, y = expertscoring)) +
+  geom_count(color='black') + 
+  geom_smooth(method='lm', color='#3880ff', formula = y ~ x) +
+  xlab("OriGami NMR Test Scoring") + 
+  ylab("Expert Scoring") +
+  scale_size_continuous(breaks = set_breaks, range = c(2,3))
+```
+    </td>
+    <td>`r format(round(cor_valid_total_c,2), nsmall=2)`<br>
+    <i>`r signif(cor_valid_total_c_p,digits=3)`</i>
+```{r plot validation correlation{{z}}-6, message=FALSE, echo=FALSE}
+ggplot(data = totalscore, aes(x = sumtotal_c, y = expertscoring)) +
+  geom_count(color='black') + 
+  geom_smooth(method='lm', color='#3880ff', formula = y ~ x) +
+  xlab("OriGami NMR Test Scoring") + 
+  ylab("Expert Scoring") +
+  scale_size_continuous(breaks = set_breaks, range = c(2,3))
+```
+    </td>
+    <td>`r format(round(cor_valid_total_c_drop,2), nsmall=2)`<br>
+    <i>`r signif(cor_valid_total_c_drop_p,digits=3)`</i>
+```{r plot validation correlation{{z}}-9, message=FALSE, echo=FALSE}
+ggplot(data = totalscore_drop, aes(x = sumtotal_c, y = expertscoring)) +
+  geom_count(color='black') + 
+  geom_smooth(method='lm', color='#3880ff', formula = y ~ x) +
+  xlab("OriGami NMR Test Scoring") + 
+  ylab("Expert Scoring") +
+  scale_size_continuous(breaks = set_breaks, range = c(2,3))
+```
+    </td>
+  </tr>
+</table>

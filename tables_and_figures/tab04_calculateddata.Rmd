@@ -1,0 +1,37 @@
+<!-- Tab. 4: Calculated Data -->
+
+<table style="width: 100%; border-collapse: collapse; border: 1px solid grey; text-align: center;">
+  <colgroup>
+    <col span="1" style="background-color:lightgrey; border: 1px solid grey;">
+    <col span="2" style=" border: 1px solid grey;">
+  </colgroup>
+  <tr style="background-color:lightgrey; border: 1px solid grey;">
+    <td>**Data**</td>
+    <td>**Variable names**</td>
+    <td>**Description**</td>
+  </tr>
+  <tr style="border: 1px solid grey;">
+    <td>**Distances**</td>
+    <td> _distance_real_click, distance_marked_real, LOC, LNV_</td>
+    <td>Distances (in m) between locations of event data determined 
+    via spDistsN1-function (RDocumentation: [sp](https://www.rdocumentation.org/packages/sp/versions/1.4-5/topics/spDistsN1)) - for self-location and navigation-to-a-flag tasks
+    </td>
+  </tr>
+  <tr style="border: 1px solid grey;">
+    <td>**Angles**</td>
+    <td> _angle_real_click, angle_marked_real, DM, DA_</td>
+    <td>Angles (in °) determined by calculating difference between
+    directions of event data - for mark-view-direction and adopt-view-direction tasks</td>
+  </tr>
+  <tr style="border: 1px solid grey;">
+    <td>**Route Length**</td>
+    <td> _lnvroute_</td>
+    <td>Route length determined via GPS speed (which is the more accurate than working with GPS coordinates) for navigation-to-a-flag tasks</td>
+  </tr>
+  <tr style="border: 1px solid grey;">
+    <td>**Sum of turning movements**</td>
+    <td> _daturn_</td>
+    <td>Angle (°) determined via adding up all angles between compass headings of the waypoint
+    data for adopt-view-direction tasks</td>
+  </tr>
+</table>

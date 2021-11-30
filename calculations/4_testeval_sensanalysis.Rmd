@@ -1,0 +1,142 @@
+In the following, the reader can manipulate the _thresholds_ (chapter 2.2.4) manually in order to see their effects on the assessment evaluation (reliability and validity). The thresholds describe the "line" between a user's correct and incorrect as well as a certain and uncertain task solution. The colors and symbols of the boxes visualize the test evaluation. Additionally, with the file `SensAnalysis_ParameterOpt.R` in this R project, the reader has access to the calculations on all possible evaluation results which can be achieved in the sensitivity analysis for all combinations of the thresholds in a certain range.
+
+```{r sensitivity analysis ui d, echo = FALSE}
+ui_d <- dashboardPage(
+  dashboardHeader(disable=TRUE),
+  dashboardSidebar(disable=TRUE),
+  
+  dashboardBody(
+    
+    tags$head(tags$style(HTML('.content-wrapper, .right-side {background-color: #ffffff;}'))),
+        
+    fluidPage(
+      
+      # menu
+      
+      fluidRow(
+        
+        column(width=4,
+          box(title = "Self-Location", width = 12, solidHeader = FALSE, status = "primary",
+            fluidPage(
+              sliderInput("loc", label = "Deviation (m):", min = 5, max = 20, value = LOClimit),
+              sliderInput("locpan", label = "Number of Pannings:", min = 5, max = 40, value = locpanlimit),
+              sliderInput("loczoom", label = "Number of Zoomings:", min = 5, max = 40, value = loczoomlimit),
+            ),
+          ),
+        ),
+        
+        column(width=4,
+          box(title = "Location", width = 12, solidHeader = FALSE, status = "success",
+            selectInput("location", label = "Choose:", choices = c("Senden","Duelmen"), selected = "Senden"),
+          ),
+          box(title = "Navigation-to-a-Flag", width = 12, solidHeader = FALSE, status = "primary",
+            fluidPage(
+              sliderInput("lnv", label = "Deviation (m):", min = 5, max = 20, value = LNVlimit),
+              sliderInput("lnvroute", label = "Factor of shortest route:", min = 2, max = 5, value = lnvroutefactor, step = 0.1),
+            ),
+          ),     
+        ),
+        
+        column(width=4,
+          box(title = "Mark-View-Direction", width = 12, solidHeader = FALSE, status = "primary",
+            fluidPage(
+              sliderInput("dm", label = "Deviation (°):", min = 5, max = 30, value = DMlimit),
+            ),
+          ),
+          box(title = "Adopt-View-Direction", width = 12, solidHeader = FALSE,  status = "primary",
+            fluidPage(
+              sliderInput("da", label = "Deviation (°):", min = 5, max = 30, value = DAlimit),
+              sliderInput("daturn", label = "Sum of Turnings (°):", min = 200, max = 1200, value = daturnlimit, step = 10),
+            ),
+          ),
+        ),
+        
+    ),
+    
+    # boxes
+    
+    fluidRow(
+      
+      valueBoxOutput("reliability_l"),
+      valueBoxOutput("reliability_all"),
+      valueBoxOutput("reliability_all_drop"),
+      valueBoxOutput("validity_l"),
+      valueBoxOutput("validity_all"),
+      valueBoxOutput("validity_all_drop"),
+
+    ),
+  
+    )
+  )
+)
+```
+
+```{r sensitivity analysis server d, echo=FALSE}
+source("calculations/4_testeval_sensanalysis/02_sensanalysis_valbox.R", local = knitr::knit_global())
+
+server_d <- function(input, output) {
+  
+  output$reliability_l <- renderValueBox({
+    source("calculations/4_testeval_sensanalysis/01_sensanalysis_code.R", encoding="utf-8", local = TRUE)
+    valueBox(
+      format(round(rel_Lc,2), nsmall=2), 
+      "Reliability (Location Tasks)",
+      icon = icon(valueboxicon(x=rel_Lc), lib = "font-awesome"),
+      color = valueboxcolor(x=rel_Lc)
+    )
+  })
+  
+  output$reliability_all <- renderValueBox({
+    source("calculations/4_testeval_sensanalysis/01_sensanalysis_code.R", encoding="utf-8", local = TRUE)
+    valueBox(
+      format(round(rel_Totalc,2), nsmall=2), 
+      "Reliability (All Tasks)",
+      icon = icon(valueboxicon(x=rel_Totalc), lib = "font-awesome"),
+      color = valueboxcolor(x=rel_Totalc)
+    )
+  })
+  
+  output$reliability_all_drop <- renderValueBox({
+    source("calculations/4_testeval_sensanalysis/01_sensanalysis_code.R", encoding="utf-8", local = TRUE)
+    valueBox(
+      format(round(rel_Totalc_drop,2), nsmall=2), 
+      "Reliability (All Tasks; dropped)",
+      icon = icon(valueboxicon(x=rel_Totalc_drop), lib = "font-awesome"),
+      color = valueboxcolor(x=rel_Totalc_drop)
+    )
+  })
+    
+  output$validity_l <- renderValueBox({
+    source("calculations/4_testeval_sensanalysis/01_sensanalysis_code.R", encoding="utf-8", local = TRUE)
+    valueBox(
+      format(round(cor_valid_loc_c,2), nsmall=2), 
+      "Validity (Location Tasks)",
+      icon = icon(valueboxicon(x=cor_valid_loc_c), lib = "font-awesome"),
+      color = valueboxcolor(x=cor_valid_loc_c)
+    )
+  })
+  
+  output$validity_all <- renderValueBox({
+    source("calculations/4_testeval_sensanalysis/01_sensanalysis_code.R", encoding="utf-8", local = TRUE)
+    valueBox(
+      format(round(cor_valid_total_c,2), nsmall=2), 
+      "Validity (All Tasks)",
+      icon = icon(valueboxicon(x=cor_valid_total_c), lib = "font-awesome"),
+      color = valueboxcolor(x=cor_valid_total_c)
+    )
+  })
+  
+  output$validity_all_drop <- renderValueBox({
+    source("calculations/4_testeval_sensanalysis/01_sensanalysis_code.R", encoding="utf-8", local = TRUE)
+    valueBox(
+      format(round(cor_valid_total_c_drop,2), nsmall=2), 
+      "Validity (All Tasks; dropped)",
+      icon = icon(valueboxicon(x=cor_valid_total_c_drop), lib = "font-awesome"),
+      color = valueboxcolor(x=cor_valid_total_c_drop)
+    )
+  })
+
+}
+
+shinyApp(ui_d, server_d, options = list(height = 800))
+```

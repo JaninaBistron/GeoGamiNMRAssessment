@@ -1,0 +1,144 @@
+<!-- Tab. 13: Cronbach's Alpha and Item-Total Correlations-->
+
+<table style="width: 100%; border-collapse: collapse; border: 1px solid lightgrey; text-align: center;">
+  <colgroup>
+    <col span="1" style="background-color:lightgrey; border: 1px solid lightgrey;">
+    <col span="2" width="50%; border: 1px solid lightgrey;">
+  </colgroup>
+<tr style="background-color:lightgrey; border: 1px solid grey;">
+  <td></td>
+  <td> **for Accuracy Data _without_ Process Data**<br></td>
+  <td> **for Accuracy Data _with_ Process Data**<br></td>
+</tr>
+<tr style="border: 1px solid grey;">
+  <td style="border: 1px solid grey;">**Location Tasks**</td>
+  <td>
+    **Cronbach's alpha for all tasks:**
+    `r format(round(alpha_locr,2), nsmall=2)`<br>
+    **Item correlation for each task**:<br>
+    LOC1r(`r format(round(item_corr_locr[[1]],2), nsmall=2)`)
+    LOC2r(`r format(round(item_corr_locr[[2]],2), nsmall=2)`)
+    LOC3r(`r format(round(item_corr_locr[[3]],2), nsmall=2)`)<br>
+    LOC4r(`r format(round(item_corr_locr[[4]],2), nsmall=2)`)
+    LOC5r(`r format(round(item_corr_locr[[5]],2), nsmall=2)`)
+    LOC6r(`r format(round(item_corr_locr[[6]],2), nsmall=2)`)<br>
+    LNV1r(`r format(round(item_corr_locr[[7]],2), nsmall=2)`)
+    LNV2r(`r format(round(item_corr_locr[[8]],2), nsmall=2)`)
+    LNV3r(`r format(round(item_corr_locr[[9]],2), nsmall=2)`)<br>
+    LNV4r(`r format(round(item_corr_locr[[10]],2), nsmall=2)`)
+    LNV5r(`r format(round(item_corr_locr[[11]],2), nsmall=2)`)
+    LNV6r(`r format(round(item_corr_locr[[12]],2), nsmall=2)`)<br>
+    **Cronbach's alpha without `r dropped_tasks_locr`:**
+    `r format(round(alpha_locr_drop,2), nsmall=2)`
+  </td>
+  <td>
+    **Cronbach's alpha for all tasks:**
+    `r format(round(alpha_locc,2), nsmall=2)`<br>
+    **Item correlation for each task**:<br>
+    LOC1c(`r format(round(item_corr_locc[[1]],2), nsmall=2)`)
+    LOC2c(`r format(round(item_corr_locc[[2]],2), nsmall=2)`)
+    LOC3c(`r format(round(item_corr_locc[[3]],2), nsmall=2)`)<br>
+    LOC4c(`r format(round(item_corr_locc[[4]],2), nsmall=2)`)
+    LOC5c(`r format(round(item_corr_locc[[5]],2), nsmall=2)`)
+    LOC6c(`r format(round(item_corr_locc[[6]],2), nsmall=2)`)<br>
+    LNV1c(`r format(round(item_corr_locc[[7]],2), nsmall=2)`)
+    LNV2c(`r format(round(item_corr_locc[[8]],2), nsmall=2)`)
+    LNV3c(`r format(round(item_corr_locc[[9]],2), nsmall=2)`)<br>
+    LNV4c(`r format(round(item_corr_locc[[10]],2), nsmall=2)`)
+    LNV5c(`r format(round(item_corr_locc[[11]],2), nsmall=2)`)
+    LNV6c(`r format(round(item_corr_locc[[12]],2), nsmall=2)`)<br>
+    **Cronbach's alpha without `r dropped_tasks_locc`:**
+    `r format(round(alpha_locc_drop,2), nsmall=2)`
+  </td>
+</tr>
+<tr style="border: 1px solid grey;">
+  <td style="border: 1px solid grey;">**Direction Tasks**</td>
+  <td>
+    **Cronbach's alpha for all tasks:**
+    `r format(round(alpha_dir,2), nsmall=2)`<br>
+    **Item correlation for each task**:<br>
+    DM1(`r format(round(item_corr_dir[[1]],2), nsmall=2)`)
+    DM2(`r format(round(item_corr_dir[[2]],2), nsmall=2)`)
+    DM3(`r format(round(item_corr_dir[[3]],2), nsmall=2)`)
+    DM4(`r format(round(item_corr_dir[[4]],2), nsmall=2)`)<br>
+    DA1(`r format(round(item_corr_dir[[5]],2), nsmall=2)`)
+    DA2(`r format(round(item_corr_dir[[6]],2), nsmall=2)`)
+    DA3(`r format(round(item_corr_dir[[7]],2), nsmall=2)`)
+    DA4(`r format(round(item_corr_dir[[8]],2), nsmall=2)`)<br>
+    **Cronbach's alpha without `r dropped_tasks_dir`:**
+    `r format(round(alpha_dir_drop,2), nsmall=2)`
+  </td>
+  <td>
+    **Cronbach's alpha for all tasks:**
+    `r format(round(alpha_dirc,2), nsmall=2)`<br>
+    **Item correlation for each task**:<br>
+    DM1c(`r format(round(item_corr_dirc[[1]],2), nsmall=2)`)
+    DM2c(`r format(round(item_corr_dirc[[2]],2), nsmall=2)`)
+    DM3c(`r format(round(item_corr_dirc[[3]],2), nsmall=2)`)
+    DM4c(`r format(round(item_corr_dirc[[4]],2), nsmall=2)`)<br>
+    DA1c(`r format(round(item_corr_dirc[[5]],2), nsmall=2)`)
+    DA2c(`r format(round(item_corr_dirc[[6]],2), nsmall=2)`)
+    DA3c(`r format(round(item_corr_dirc[[7]],2), nsmall=2)`)
+    DA4c(`r format(round(item_corr_dirc[[8]],2), nsmall=2)`)<br>
+    **Cronbach's alpha without `r dropped_tasks_dirc`:**
+    `r format(round(alpha_dirc_drop,2), nsmall=2)`
+  </td>
+</tr>
+<tr style="border: 1px solid grey;">
+  <td style="border: 1px solid grey;">**All Tasks**</td>
+  <td>
+    **Cronbach's alpha for all tasks:**
+    `r format(round(alpha_all,2), nsmall=2)`<br>
+    **Item correlation for each task**:<br>
+    LOC1(`r format(round(item_corr_all[[1]],2), nsmall=2)`)
+    LOC2(`r format(round(item_corr_all[[2]],2), nsmall=2)`)
+    LOC3(`r format(round(item_corr_all[[3]],2), nsmall=2)`)
+    LOC4(`r format(round(item_corr_all[[4]],2), nsmall=2)`)<br>
+    LOC5(`r format(round(item_corr_all[[5]],2), nsmall=2)`)
+    LOC6(`r format(round(item_corr_all[[6]],2), nsmall=2)`)
+    LNV1(`r format(round(item_corr_all[[7]],2), nsmall=2)`)
+    LNV2(`r format(round(item_corr_all[[8]],2), nsmall=2)`)<br>
+    LNV3(`r format(round(item_corr_all[[9]],2), nsmall=2)`)
+    LNV4(`r format(round(item_corr_all[[10]],2), nsmall=2)`)
+    LNV5(`r format(round(item_corr_all[[11]],2), nsmall=2)`)
+    LNV6(`r format(round(item_corr_all[[12]],2), nsmall=2)`)<br>
+    DM1(`r format(round(item_corr_all[[13]],2), nsmall=2)`)
+    DM2(`r format(round(item_corr_all[[14]],2), nsmall=2)`)
+    DM3(`r format(round(item_corr_all[[15]],2), nsmall=2)`)
+    DM4(`r format(round(item_corr_all[[15]],2), nsmall=2)`)<br>
+    DA1(`r format(round(item_corr_all[[17]],2), nsmall=2)`)
+    DA2(`r format(round(item_corr_all[[18]],2), nsmall=2)`)
+    DA3(`r format(round(item_corr_all[[19]],2), nsmall=2)`)
+    DA4(`r format(round(item_corr_all[[20]],2), nsmall=2)`)<br>
+    **Cronbach's alpha without `r dropped_tasks_all`:**
+    `r format(round(alpha_all_drop,2), nsmall=2)`
+  </td>
+  <td>
+    **Cronbach's alpha for all tasks:**
+    `r format(round(alpha_allc,2), nsmall=2)`<br>
+    **Item correlation for each task**:<br>
+    LOC1(`r format(round(item_corr_allc[[1]],2), nsmall=2)`)
+    LOC2(`r format(round(item_corr_allc[[2]],2), nsmall=2)`)
+    LOC3(`r format(round(item_corr_allc[[3]],2), nsmall=2)`)
+    LOC4(`r format(round(item_corr_allc[[4]],2), nsmall=2)`)<br>
+    LOC5(`r format(round(item_corr_allc[[5]],2), nsmall=2)`)
+    LOC6(`r format(round(item_corr_allc[[6]],2), nsmall=2)`)
+    LNV1(`r format(round(item_corr_allc[[7]],2), nsmall=2)`)
+    LNV2(`r format(round(item_corr_allc[[8]],2), nsmall=2)`)<br>
+    LNV3(`r format(round(item_corr_allc[[9]],2), nsmall=2)`)
+    LNV4(`r format(round(item_corr_allc[[10]],2), nsmall=2)`)
+    LNV5(`r format(round(item_corr_allc[[11]],2), nsmall=2)`)
+    LNV6(`r format(round(item_corr_allc[[12]],2), nsmall=2)`)<br>
+    DM1(`r format(round(item_corr_allc[[13]],2), nsmall=2)`)
+    DM2(`r format(round(item_corr_allc[[14]],2), nsmall=2)`)
+    DM3(`r format(round(item_corr_allc[[15]],2), nsmall=2)`)
+    DM4(`r format(round(item_corr_allc[[15]],2), nsmall=2)`)<br>
+    DA1(`r format(round(item_corr_allc[[17]],2), nsmall=2)`)
+    DA2(`r format(round(item_corr_allc[[18]],2), nsmall=2)`)
+    DA3(`r format(round(item_corr_allc[[19]],2), nsmall=2)`)
+    DA4(`r format(round(item_corr_allc[[20]],2), nsmall=2)`)<br>
+    **Cronbach's alpha without `r dropped_tasks_allc`:**
+    `r format(round(alpha_allc_drop,2), nsmall=2)`
+  </td>
+</tr>
+</table>

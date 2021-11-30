@@ -1,0 +1,8 @@
+<!-- Tab. 11: Scoring Data for Location Tasks -->
+
+```{r show scoring data for location tasks{{z}}, echo=FALSE}
+locationtasks_cat2 <- dplyr::select(locationtasks_cat, -time)
+knitr::kable(locationtasks_cat2, align = 'c', format="html") %>%
+    kable_styling(font_size = 12) %>%
+    scroll_box(width = "100%", height = "500px")
+```

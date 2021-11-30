@@ -1,0 +1,8 @@
+<!-- Tab. 12: Scoring Data for Direction Tasks -->
+
+```{r show scoring data for view direction tasks{{z}}, echo=FALSE}
+vdirectiontasks_cat2 <- dplyr::select(vdirectiontasks_cat, -time_)
+knitr::kable(vdirectiontasks_cat2, align = 'c', format="html") %>%
+    kable_styling(font_size = 12) %>%
+    scroll_box(width = "100%", height = "500px")
+```

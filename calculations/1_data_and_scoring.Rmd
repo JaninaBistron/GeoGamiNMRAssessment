@@ -1,0 +1,197 @@
+```{r determine location participants{{z}}, echo=FALSE}
+location <- logfile$name[[1]]
+participants <- nrow(logfile)
+```
+
+In the following, the raw data, task performance data, as well as the resulting NMR competency score for the location _`r location`_ with `r participants` participants is presented.
+
+```{r collect and calculate waypoint data{{z}}, echo=FALSE}
+source("calculations/1_data_and_scoring/01_calc_waypointdata.R", local = knitr::knit_global())
+```
+
+```{r calculate total game duration and route length{{z}}, echo=FALSE}
+source("calculations/1_data_and_scoring/02_calc_duration_and_routelength.R", local = knitr::knit_global())
+```
+
+```{r collect and calculate event data{{z}}, echo = FALSE}
+source("calculations/1_data_and_scoring/03_calc_eventdata.R", local = knitr::knit_global())
+```
+
+```{r collect and calculate task performance data for location tasks{{z}}, echo=FALSE}
+source("calculations/1_data_and_scoring/04_calc_taskperformance_loctasks.R", local = knitr::knit_global())
+```
+
+```{r collect and calculate task performance data for direction tasks{{z}}, echo=FALSE}
+source("calculations/1_data_and_scoring/05_calc_taskperformance_dirtasks.R", local = knitr::knit_global())
+```
+
+#### Raw Data
+
+The raw data is presented in the following and stored in the files `raw_data.Rda` or `raw_data.json` of the `results` folder.
+
+```{r fig2{{z}}, echo = FALSE}
+src <- lapply(z, function(z) knitr::knit_expand(file = "tables_and_figures/fig02_results_waypointdata.Rmd"))
+```
+`r knitr::knit(text = unlist(src))`
+_Fig. `r 2 - figmin` - `r location`: Waypoint data of each participant incl. Location Tasks: Child's solution (blue) and correct solution (green) in self-location tasks (marker) and navigation-to-a-flag tasks (flag)._
+
+<details>
+  <summary>_Click here_ for details on the participants' waypoint data:</summary>
+  <p style="padding: 4px; margin: 0; box-shadow: 1px 1px 1px 1px #bbbbbb;">
+```{r tab6{{z}}, echo = FALSE}
+src <- lapply(z, function(z) knitr::knit_expand(file = "tables_and_figures/tab06_results_waypointdata.Rmd"))
+```
+`r knitr::knit(text = unlist(src))`
+</details>
+_Tab. `r 6 - tabmin` - `r location`: Waypoint data of each participant (for details on the variables: see tab. 2`r ofrunfile`)._
+
+<details>
+  <summary>_Click here_ for details on the participants' event data:</summary>
+  <p style="padding: 4px; margin: 0; box-shadow: 1px 1px 1px 1px #bbbbbb;">
+```{r tab7{{z}}, echo = FALSE}
+src <- lapply(z, function(z) knitr::knit_expand(file = "tables_and_figures/tab07_results_eventdata.Rmd"))
+```
+`r knitr::knit(text = unlist(src))`
+</details>
+_Tab. `r 7 - tabmin` - `r location`: Event data of each participant (for details on the variables: see tab. 3 and 4`r ofrunfile`)._
+
+#### Task Performance Data
+
+The task performance data is presented below. We stored it also in the files `taskperformance_loc.Rda` or `taskperformance_loc.json` (for Location Tasks) and `taskperformance_dir.Rda` or `taskperformance_dir.json` (for Direction Tasks) of the `results` folder.
+
+<details>
+  <summary>_Click here_ for details on the participants' task performance data (for Location Tasks):</summary>
+  <p style="padding: 4px; margin: 0; box-shadow: 1px 1px 1px 1px #bbbbbb;">
+```{r tab8{{z}}, echo = FALSE}
+src <- lapply(z, function(z) knitr::knit_expand(file = "tables_and_figures/tab08_results_taskperformance_loc.Rmd"))
+```
+`r knitr::knit(text = unlist(src))`
+</details>
+_Tab. `r 8 - tabmin` - `r location`: Task performance data for Location Tasks of each participant (for details on the variables: see tab. 5`r ofrunfile`) - duration (total game duration in min), totalRoute (total route walked in m)._
+
+<details>
+  <summary>_Click here_ for details on the participants' task performance data (for Direction Tasks):</summary>
+  <p style="padding: 4px; margin: 0; box-shadow: 1px 1px 1px 1px #bbbbbb;">
+```{r tab9{{z}}, echo = FALSE}
+src <- lapply(z, function(z) knitr::knit_expand(file = "tables_and_figures/tab09_results_taskperformance_dir.Rmd"))
+```
+`r knitr::knit(text = unlist(src))`
+</details>
+_Tab. `r 9 - tabmin` - `r location`: Task performance data for Direction Tasks of each participant (for details on the variables: see tab. 5`r ofrunfile`) - duration (total game duration in min), totalRoute (total route walked in m)._
+
+```{r fig3{{z}}, echo = FALSE}
+src <- lapply(z, function(z) knitr::knit_expand(file = "tables_and_figures/fig03_results_density_taskperformance_loc.Rmd"))
+```
+`r knitr::knit(text = unlist(src))`
+_Fig. `r 3 - figmin` - `r location`: Density plots for the Location Task performance of all participants for all tasks of each task type._
+
+```{r fig4{{z}}, echo = FALSE}
+src <- lapply(z, function(z) knitr::knit_expand(file = "tables_and_figures/fig04_results_density_taskperformance_dir.Rmd"))
+```
+`r knitr::knit(text = unlist(src))`
+_Fig. `r 4 - figmin` - `r location`: Density plots for the Direction Task performance of all participants for all tasks of each task type._
+
+#### NMR Competency Score
+
+We fixed the _thresholds_ (chapter 2.2.4) to the following values resulting to the NMR competency scoring presented below. The thresholds define the "line" between a correct and incorrect as well as a confident and inconfident solution. The scoring data can be found in the files `scoring_loc.Rda` or `scoring_loc.json` (for Location Tasks) and `scoring_dir.Rda` or `scoring_dir.json` (for Direction Tasks) of the `results` folder.
+
+```{r set thresholds{{z}}, echo=FALSE}
+LOClimit <- 10
+locpanlimit <- 25
+loczoomlimit <- 10
+LNVlimit <- 5
+lnvroutefactor <- 2
+DMlimit <- 25
+DAlimit <- 25
+daturnlimit <- 500
+```
+
+```{r create data frame for location task scoring{{z}}, echo=FALSE}
+source("calculations/1_data_and_scoring/06_score_loctasks.R", local = knitr::knit_global())
+```
+
+```{r score-calculations for self-location tasks{{z}}, echo=FALSE}
+source("calculations/1_data_and_scoring/07_score_loc.R", local = knitr::knit_global())
+```
+
+```{r score-calculations for navigation-to-a-flag tasks{{z}}, echo=FALSE}
+source("calculations/1_data_and_scoring/08_score_lnv.R", local = knitr::knit_global())
+```
+
+```{r create data frame for direction tasks scoring{{z}}, echo=FALSE}
+source("calculations/1_data_and_scoring/09_score_dirtasks.R", local = knitr::knit_global())
+```
+
+```{r score-calculations for mark-view-direction tasks{{z}}, echo=FALSE}
+source("calculations/1_data_and_scoring/10_score_dm.R", local = knitr::knit_global())
+```
+
+```{r score-calculations for adopt-view-direction tasks{{z}}, echo=FALSE}
+source("calculations/1_data_and_scoring/11_score_da.R", local = knitr::knit_global())
+```
+
+```{r tab10{{z}}, echo = FALSE}
+src <- lapply(z, function(z) knitr::knit_expand(file = "tables_and_figures/tab10_thresholds_accuracy_process_data.Rmd"))
+```
+`r knitr::knit(text = unlist(src))`
+_Tab. `r 10  - tabmin` - `r location`: Thresholds for the accuracy data and process data scoring._
+
+<details>
+  <summary>_Click here_ for details on the Location Tasks Scoring:</summary>
+```{r tab11{{z}}, echo = FALSE}
+src <- lapply(z, function(z) knitr::knit_expand(file = "tables_and_figures/tab11_results_scoring_loc.Rmd"))
+```
+`r knitr::knit(text = unlist(src))`
+</details>
+_Tab. `r 11 - tabmin` - `r location`: : Scoring for the Location Tasks - LOCc and LNVc summarize the scoring for accuracy and process data (combined)._
+
+<details>
+  <summary>_Click here_ for details on the Direction Tasks Scoring:</summary>
+```{r tab12{{z}}, echo = FALSE}
+src <- lapply(z, function(z) knitr::knit_expand(file = "tables_and_figures/tab12_results_scoring_dir.Rmd"))
+```
+`r knitr::knit(text = unlist(src))`
+</details>
+_Tab. `r 12 - tabmin` - `r location`: Scoring for the Direction Tasks - DMc and DAc summarize the scoring for accuracy and process data (combined)._
+
+
+<!-- Store Data -->
+
+```{r store data files{{z}}, echo=FALSE}
+if(location=="Senden"){
+  save(logfile,file="results/senden/raw_data.Rda")
+  save(locationtasks_raw,file="results/senden/taskperformance_loc.Rda")
+  save(vdirectiontasks_raw,file="results/senden/taskperformance_dir.Rda")
+  save(locationtasks_cat2,file="results/senden/scoring_loc.Rda")
+  save(vdirectiontasks_cat2,file="results/senden/scoring_dir.Rda")
+  write_json(logfile,"results/senden/raw_data.json")
+  write_json(locationtasks_raw,"results/senden/taskperformance_loc.json")
+  write_json(vdirectiontasks_raw,"results/senden/taskperformance_dir.json")
+  write_json(locationtasks_cat2,"results/senden/scoring_loc.json")
+  write_json(vdirectiontasks_cat2,"results/senden/scoring_dir.json")
+} else {
+  if(location=="Duelmen"){
+    save(logfile,file="results/duelmen/raw_data.Rda")
+    save(locationtasks_raw,file="results/duelmen/taskperformance_loc.Rda")
+    save(vdirectiontasks_raw,file="results/duelmen/taskperformance_dir.Rda")
+    save(locationtasks_cat2,file="results/duelmen/scoring_loc.Rda")
+    save(vdirectiontasks_cat2,file="results/duelmen/scoring_dir.Rda")
+    write_json(logfile,"results/duelmen/raw_data.json")
+    write_json(locationtasks_raw,"results/duelmen/taskperformance_loc.json")
+    write_json(vdirectiontasks_raw,"results/duelmen/taskperformance_dir.json")
+    write_json(locationtasks_cat2,"results/duelmen/scoring_loc.json")
+    write_json(vdirectiontasks_cat2,"results/duelmen/scoring_dir.json")
+  } else {
+      save(logfile,file="results/custom/raw_data.Rda")
+      save(locationtasks_raw,file="results/custom/taskperformance_loc.Rda")
+      save(vdirectiontasks_raw,file="results/custom/taskperformance_dir.Rda")
+      save(locationtasks_cat2,file="results/custom/scoring_loc.Rda")
+      save(vdirectiontasks_cat2,file="results/custom/scoring_dir.Rda")
+      write_json(logfile,"results/custom/raw_data.json")
+      write_json(locationtasks_raw,"results/custom/taskperformance_loc.json")
+      write_json(vdirectiontasks_raw,"results/custom/taskperformance_dir.json")
+      write_json(locationtasks_cat2,"results/custom/scoring_loc.json")
+      write_json(vdirectiontasks_cat2,"results/custom/scoring_dir.json")
+    }
+}
+```

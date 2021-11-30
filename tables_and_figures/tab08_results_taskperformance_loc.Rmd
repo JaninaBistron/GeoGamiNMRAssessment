@@ -1,0 +1,8 @@
+<!-- Tab. 8: Task Peformance Data (Location Tasks) -->
+
+```{r task performance loc {{z}}, echo=FALSE}
+locationtasks_raw2 <- dplyr::select(locationtasks_raw, -time)
+knitr::kable(locationtasks_raw2, align = 'c', format="html") %>%
+  kable_styling(font_size = 12) %>%
+  scroll_box(width = "100%", height = "500px")
+```

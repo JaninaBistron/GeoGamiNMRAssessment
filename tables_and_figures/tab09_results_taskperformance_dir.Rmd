@@ -1,0 +1,8 @@
+<!-- Tab. 9: Task Peformance Data (Direction Tasks) -->
+
+```{r task performance dir {{z}}, echo=FALSE}
+vdirectiontasks_raw2 <- dplyr::select(vdirectiontasks_raw, -time)
+knitr::kable(vdirectiontasks_raw2, align = 'c', format="html") %>%
+  kable_styling(font_size = 12) %>%
+  scroll_box(width = "100%", height = "500px")
+```

@@ -1,0 +1,155 @@
+<!-- Tab. 14: Task Difficulties -->
+
+<table style="width: 100%; border-collapse: collapse; border: 1px solid lightgrey; text-align: center;">
+  <colgroup>
+    <col span="1" style="background-color:lightgrey; border: 1px solid lightgrey;">
+    <col span="2" width="50%; border: 1px solid lightgrey;">
+  </colgroup>
+<tr style="background-color:lightgrey; border: 1px solid grey;">
+  <td></td>
+  <td>**for Accuracy Data _without_ Process Data**</td>
+  <td>**for Accuracy Data _with_ Process Data**</td>
+</tr>
+<tr style="border: 1px solid grey;">
+  <td style="border: 1px solid grey;">**Location Tasks**</td>
+  <td style="border: 1px solid grey;">
+    <table style="width: 100%;">
+      <tr>
+        <td>**Test-half 1**</td>
+        <td>**Test-half 2**</td>
+      </tr>
+      <tr>
+        <td>
+          `r taskdifficulties_locr$task[[1]]` 
+          (`r format(round(taskdifficulties_locr$difficulty[[1]],2), nsmall=2)`)<br>
+          `r taskdifficulties_locr$task[[4]]`
+          (`r format(round(taskdifficulties_locr$difficulty[[4]],2), nsmall=2)`)<br>
+          `r taskdifficulties_locr$task[[5]]`
+          (`r format(round(taskdifficulties_locr$difficulty[[5]],2), nsmall=2)`)<br>
+          `r taskdifficulties_lnvr$task[[2]]`
+          (`r format(round(taskdifficulties_lnvr$difficulty[[2]],2), nsmall=2)`)<br>
+          `r taskdifficulties_lnvr$task[[3]]`
+          (`r format(round(taskdifficulties_lnvr$difficulty[[3]],2), nsmall=2)`)<br>
+          `r taskdifficulties_lnvr$task[[6]]`
+          (`r format(round(taskdifficulties_lnvr$difficulty[[6]],2), nsmall=2)`)
+        </td>
+        <td>
+          `r taskdifficulties_locr$task[[2]]`
+          (`r format(round(taskdifficulties_locr$difficulty[[2]],2), nsmall=2)`)<br>
+          `r taskdifficulties_locr$task[[3]]`
+          (`r format(round(taskdifficulties_locr$difficulty[[3]],2), nsmall=2)`)<br>
+          `r taskdifficulties_locr$task[[6]]`
+          (`r format(round(taskdifficulties_locr$difficulty[[6]],2), nsmall=2)`)<br>
+          `r taskdifficulties_lnvr$task[[1]]`
+          (`r format(round(taskdifficulties_lnvr$difficulty[[1]],2), nsmall=2)`)<br>
+          `r taskdifficulties_lnvr$task[[4]]`
+          (`r format(round(taskdifficulties_lnvr$difficulty[[4]],2), nsmall=2)`)<br>
+          `r taskdifficulties_lnvr$task[[5]]`
+          (`r format(round(taskdifficulties_lnvr$difficulty[[5]],2), nsmall=2)`)
+        </td>
+      </tr>
+    </table>
+  </td>
+  <td style="border: 1px solid grey;">
+    <table style="width: 100%;">
+      <tr>
+        <td>**Test-half 1**</td>
+        <td>**Test-half 2**</td>
+      </tr>
+      <tr>
+        <td>
+          `r taskdifficulties_locc$task[[1]]`
+          (`r format(round(taskdifficulties_locc$difficulty[[1]],2), nsmall=2)`)<br>
+          `r taskdifficulties_locc$task[[4]]`
+          (`r format(round(taskdifficulties_locc$difficulty[[4]],2), nsmall=2)`)<br>
+          `r taskdifficulties_locc$task[[5]]`
+          (`r format(round(taskdifficulties_locc$difficulty[[5]],2), nsmall=2)`)<br>
+         `r taskdifficulties_lnvc$task[[2]]`
+          (`r format(round(taskdifficulties_lnvc$difficulty[[2]],2), nsmall=2)`)<br>
+          `r taskdifficulties_lnvc$task[[3]]`
+          (`r format(round(taskdifficulties_lnvc$difficulty[[3]],2), nsmall=2)`)<br>
+          `r taskdifficulties_lnvc$task[[6]]`
+          (`r format(round(taskdifficulties_lnvc$difficulty[[6]],2), nsmall=2)`)
+        </td>
+        <td>
+          `r taskdifficulties_locc$task[[2]]`
+          (`r format(round(taskdifficulties_locc$difficulty[[2]],2), nsmall=2)`)<br>
+          `r taskdifficulties_locc$task[[3]]`
+          (`r format(round(taskdifficulties_locc$difficulty[[3]],2), nsmall=2)`)<br>
+          `r taskdifficulties_locc$task[[6]]`
+          (`r format(round(taskdifficulties_locc$difficulty[[6]],2), nsmall=2)`)<br>
+          `r taskdifficulties_lnvc$task[[1]]`
+          (`r format(round(taskdifficulties_lnvc$difficulty[[1]],2), nsmall=2)`)<br>
+          `r taskdifficulties_lnvc$task[[4]]`
+          (`r format(round(taskdifficulties_lnvc$difficulty[[4]],2), nsmall=2)`)<br>
+          `r taskdifficulties_lnvc$task[[5]]`
+          (`r format(round(taskdifficulties_lnvc$difficulty[[5]],2), nsmall=2)`)
+        </td>
+      </tr>
+    </table>
+  </td>
+</tr>
+<tr style="border: 1px solid grey;">
+  <td style="border: 1px solid grey;">**Direction Tasks**</td>
+  <td style="border: 1px solid grey;">
+    <table style="width: 100%;">
+      <tr>
+        <td>**Test-half 1**</td>
+        <td>**Test-half 2**</td>
+      </tr>
+      <tr>
+        <td>
+          `r taskdifficulties_dm$task[[1]]`
+          (`r format(round(taskdifficulties_dm$difficulty[[1]],2), nsmall=2)`)<br>
+          `r taskdifficulties_dm$task[[4]]`
+          (`r format(round(taskdifficulties_dm$difficulty[[4]],2), nsmall=2)`)<br>
+          `r taskdifficulties_da$task[[1]]`
+          (`r format(round(taskdifficulties_da$difficulty[[1]],2), nsmall=2)`)<br>
+          `r taskdifficulties_da$task[[4]]`
+          (`r format(round(taskdifficulties_da$difficulty[[4]],2), nsmall=2)`)
+        </td>
+        <td>
+          `r taskdifficulties_dm$task[[2]]`
+          (`r format(round(taskdifficulties_dm$difficulty[[2]],2), nsmall=2)`)<br>
+          `r taskdifficulties_dm$task[[3]]`
+          (`r format(round(taskdifficulties_dm$difficulty[[3]],2), nsmall=2)`)<br>
+          `r taskdifficulties_da$task[[2]]`
+          (`r format(round(taskdifficulties_da$difficulty[[2]],2), nsmall=2)`)<br>
+          `r taskdifficulties_da$task[[3]]`
+          (`r format(round(taskdifficulties_da$difficulty[[3]],2), nsmall=2)`)
+        </td>
+      </tr>
+    </table>
+  </td>
+  <td style="border: 1px solid grey;">
+    <table style="width: 100%;">
+      <tr>
+        <td>**Test-half 1**</td>
+        <td>**Test-half 2**</td>
+      </tr>
+      <tr>
+        <td>
+          `r taskdifficulties_dmc$task[[1]]`
+          (`r format(round(taskdifficulties_dmc$difficulty[[1]],2), nsmall=2)`)<br>
+          `r taskdifficulties_dmc$task[[4]]`
+          (`r format(round(taskdifficulties_dmc$difficulty[[4]],2), nsmall=2)`)<br>
+          `r taskdifficulties_dac$task[[1]]`
+          (`r format(round(taskdifficulties_dac$difficulty[[1]],2), nsmall=2)`)<br>
+          `r taskdifficulties_dac$task[[4]]`
+          (`r format(round(taskdifficulties_dac$difficulty[[4]],2), nsmall=2)`)
+        </td>
+        <td>
+          `r taskdifficulties_dmc$task[[2]]`
+          (`r format(round(taskdifficulties_dmc$difficulty[[2]],2), nsmall=2)`)<br>
+          `r taskdifficulties_dmc$task[[3]]`
+          (`r format(round(taskdifficulties_dmc$difficulty[[3]],2), nsmall=2)`)<br>
+          `r taskdifficulties_dac$task[[2]]`
+          (`r format(round(taskdifficulties_dac$difficulty[[2]],2), nsmall=2)`)<br>
+          `r taskdifficulties_dac$task[[3]]`
+          (`r format(round(taskdifficulties_dac$difficulty[[3]],2), nsmall=2)`)
+        </td>
+      </tr>
+    </table>
+  </td>
+</tr>
+</table>

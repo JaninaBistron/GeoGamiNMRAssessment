@@ -1,0 +1,69 @@
+---
+title: "GeoGami NMR Assessment"
+subtitle: "Custom Evaluation Script"
+author: "J. Bistron, A. Schwering"
+date: "4/9/2021"
+runtime: shiny
+output:
+  html_document:
+    toc: true
+    toc_float: true
+    toc_collapsed: false
+    theme: cosmo
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+```{css, echo=FALSE}
+pre {
+  max-height: 300px;
+  overflow-y: auto;
+}
+
+pre[class] {
+  max-height: 300px;
+}
+```
+
+```{r logfile, echo=FALSE, message=FALSE, warning=FALSE}
+library("shiny")
+library("shinydashboard")
+library("kableExtra")
+library("tidyverse")
+library("lubridate")
+library("data.table")
+library("rgdal")
+library("sf")
+library("sp")
+library("ggplot2")
+library("psych")
+library("leaflet")
+library("leaflet.extras")
+library("jsonlite")
+```
+
+# Results of your Custom Data
+
+```{r load logfile senden, echo=FALSE}
+load("data/custom/logfile.Rda")
+z <- 1 # defines chunk numbers
+tabmin <- 5 # defines table numbers
+figmin <- 1 # defines figure numbers
+ofrunfile <- " of the Run-file" # defines the references to tables of the Run-file
+```
+
+## 1 Data and Scoring
+
+```{r, echo = FALSE}
+src <- lapply(z, function(z) knitr::knit_expand(file = "calculations/1_data_and_scoring.Rmd"))
+```
+`r knitr::knit(text = unlist(src))`
+
+## 2 Assessment Evaluation
+
+```{r, echo = FALSE}
+src <- lapply(z, function(z) knitr::knit_expand(file = "calculations/2_testeval_items_reliability.Rmd"))
+```
+`r knitr::knit(text = unlist(src))`

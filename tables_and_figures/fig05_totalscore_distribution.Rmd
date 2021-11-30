@@ -1,0 +1,214 @@
+<!-- Fig. 5: Total Score Distribution -->
+
+<table style="width: 100%; border-collapse: collapse; border: 1px solid grey; text-align: center;">
+  <colgroup>
+    <col span="1" style="background-color:lightgrey; border: 1px solid grey;">
+    <col span="2" style="border: 1px solid grey;">
+  </colgroup>
+  <tr style="background-color:lightgrey; border: 1px solid grey;">
+    <td></td>
+    <td>**for Accuracy Data**<br>**_without_ Process Data**</td>
+    <td>**for Accuracy Data**<br>**_with_ Process Data**</td>
+    <td>**for Accuracy Data**<br>**_with_ Process Data**<br>**_excl._ dropped tasks**</td>
+  </tr>
+  <tr style="border: 1px solid grey;">
+    <td>**Only Location Tasks**</td>
+    <td>
+```{r test score distribution{{z}}-1, echo=FALSE}
+min = min(totalscore$sumloc_r)
+max = max(totalscore$sumloc_r)
+mode = Mode(totalscore$sumloc_r)[1]
+mean = mean(totalscore$sumloc_r)
+sd = sd(totalscore$sumloc_r)
+median = median(totalscore$sumloc_r)
+lower = quantile(totalscore$sumloc_r)[[2]]
+upper = quantile(totalscore$sumloc_r)[[4]]
+skew = skewness(totalscore$sumloc_r, na.rm = FALSE)
+
+ggplot(totalscore, aes(x=sumloc_r)) +
+  geom_histogram(aes(y=..density..),colour="black", fill="white", binwidth = 5) +
+  geom_density(alpha=.2, fill="#3880ff") +
+  geom_vline(xintercept = lower, colour="green", linetype = "longdash") +
+  geom_vline(xintercept = upper, colour="green", linetype = "longdash") +
+  geom_vline(xintercept = mean, colour="red") +
+  geom_vline(xintercept = median, colour="blue") +
+  geom_vline(xintercept = mode, colour="orange") +
+  xlab("OriGami NMR Test Scoring")
+```
+      <br>
+      **range:** from `r min`
+      to `r max` points <br>
+      **<span style="color: orange;">mode:</span>** `r mode`<br>
+      **<span style="color: red;">mean:</span>** `r format(round(mean,2), nsmall=2)`,
+      **sd:** `r format(round(sd,2), nsmall=2)`<br>
+      **<span style="color: blue;">median:</span>** `r median`, 
+      **<span style="color: green;">quantiles:</span>** Q1=`r lower`, Q3=`r upper`<br>
+      **skewness**: `r format(round(skew,2), nsmall=2)`
+    </td>
+    <td>
+```{r test score distribution{{z}}-2, echo=FALSE}
+min = min(totalscore$sumloc_c)
+max = max(totalscore$sumloc_c)
+mode = Mode(totalscore$sumloc_c)[1]
+mean = mean(totalscore$sumloc_c)
+sd = sd(totalscore$sumloc_c)
+median = median(totalscore$sumloc_c)
+lower = quantile(totalscore$sumloc_c)[[2]]
+upper = quantile(totalscore$sumloc_c)[[4]]
+skew = skewness(totalscore$sumloc_c, na.rm = FALSE)
+
+ggplot(totalscore, aes(x=sumloc_c)) +
+  geom_histogram(aes(y=..density..),colour="black", fill="white", binwidth = 5) +
+  geom_density(alpha=.2, fill="#3880ff") +
+  geom_vline(xintercept = lower, colour="green", linetype = "longdash") +
+  geom_vline(xintercept = upper, colour="green", linetype = "longdash") +
+  geom_vline(xintercept = mean, colour="red") +
+  geom_vline(xintercept = median, colour="blue") +
+  geom_vline(xintercept = mode, colour="orange") +
+  xlab("OriGami NMR Test Scoring")
+```
+      <br>
+      **range:** from `r min`
+      to `r max` points <br>
+      **<span style="color: orange;">mode:</span>** `r mode`<br>
+      **<span style="color: red;">mean:</span>** `r format(round(mean,2), nsmall=2)`,
+      **sd:** `r format(round(sd,2), nsmall=2)`<br>
+      **<span style="color: blue;">median:</span>** `r median`, 
+      **<span style="color: green;">quantiles:</span>** Q1=`r lower`, Q3=`r upper`<br>
+      **skewness**: `r format(round(skew,2), nsmall=2)`
+    </td>
+    <td>
+```{r test score distribution{{z}}-3, echo=FALSE}
+min = min(totalscore_drop$sumloc_c)
+max = max(totalscore_drop$sumloc_c)
+mode = Mode(totalscore_drop$sumloc_c)[1]
+mean = mean(totalscore_drop$sumloc_c)
+sd = sd(totalscore_drop$sumloc_c)
+median = median(totalscore_drop$sumloc_c)
+lower = quantile(totalscore_drop$sumloc_c)[[2]]
+upper = quantile(totalscore_drop$sumloc_c)[[4]]
+skew = skewness(totalscore_drop$sumloc_c, na.rm = FALSE)
+
+ggplot(totalscore_drop, aes(x=sumloc_c)) +
+  geom_histogram(aes(y=..density..),colour="black", fill="white", binwidth = 5) +
+  geom_density(alpha=.2, fill="#3880ff") +
+  geom_vline(xintercept = lower, colour="green", linetype = "longdash") +
+  geom_vline(xintercept = upper, colour="green", linetype = "longdash") +
+  geom_vline(xintercept = mean, colour="red") +
+  geom_vline(xintercept = median, colour="blue") +
+  geom_vline(xintercept = mode, colour="orange") +
+  xlab("OriGami NMR Test Scoring")
+```
+      <br>
+      **range:** from `r min`
+      to `r max` points <br>
+      **<span style="color: orange;">mode:</span>** `r mode`<br>
+      **<span style="color: red;">mean:</span>** `r format(round(mean,2), nsmall=2)`,
+      **sd:** `r format(round(sd,2), nsmall=2)`<br>
+      **<span style="color: blue;">median:</span>** `r median`, 
+      **<span style="color: green;">quantiles:</span>** Q1=`r lower`, Q3=`r upper`<br>
+      **skewness**: `r format(round(skew,2), nsmall=2)`
+    </td>
+  </tr>
+  <tr style="border: 1px solid grey;">
+    <td>**All Tasks**</td>
+    <td>
+```{r test score distribution{{z}}-4, echo=FALSE}
+min = min(totalscore$sumtotal_r)
+max = max(totalscore$sumtotal_r)
+mode = Mode(totalscore$sumtotal_r)[1]
+mean = mean(totalscore$sumtotal_r)
+sd = sd(totalscore$sumtotal_r)
+median = median(totalscore$sumtotal_r)
+lower = quantile(totalscore$sumtotal_r)[[2]]
+upper = quantile(totalscore$sumtotal_r)[[4]]
+skew = skewness(totalscore$sumtotal_r, na.rm = FALSE)
+
+ggplot(totalscore, aes(x=sumtotal_r)) +
+  geom_histogram(aes(y=..density..),colour="black", fill="white", binwidth = 5) +
+  geom_density(alpha=.2, fill="#3880ff") +
+  geom_vline(xintercept = lower, colour="green", linetype = "longdash") +
+  geom_vline(xintercept = upper, colour="green", linetype = "longdash") +
+  geom_vline(xintercept = mean, colour="red") +
+  geom_vline(xintercept = median, colour="blue") +
+  geom_vline(xintercept = mode, colour="orange") +
+  xlab("OriGami NMR Test Scoring")
+```
+      <br>
+      **range:** from `r min`
+      to `r max` points <br>
+      **<span style="color: orange;">mode:</span>** `r mode`<br>
+      **<span style="color: red;">mean:</span>** `r format(round(mean,2), nsmall=2)`,
+      **sd:** `r format(round(sd,2), nsmall=2)`<br>
+      **<span style="color: blue;">median:</span>** `r median`, 
+      **<span style="color: green;">quantiles:</span>** Q1=`r lower`, Q3=`r upper`<br>
+      **skewness**: `r format(round(skew,2), nsmall=2)`
+    </td>
+    <td>
+```{r test score distribution{{z}}-5, echo=FALSE}
+min = min(totalscore$sumtotal_c)
+max = max(totalscore$sumtotal_c)
+mode = Mode(totalscore$sumtotal_c)[1]
+mean = mean(totalscore$sumtotal_c)
+sd = sd(totalscore$sumtotal_c)
+median = median(totalscore$sumtotal_c)
+lower = quantile(totalscore$sumtotal_c)[[2]]
+upper = quantile(totalscore$sumtotal_c)[[4]]
+skew = skewness(totalscore$sumtotal_c, na.rm = FALSE)
+
+ggplot(totalscore, aes(x=sumtotal_c)) +
+  geom_histogram(aes(y=..density..),colour="black", fill="white", binwidth = 5) +
+  geom_density(alpha=.2, fill="#3880ff") +
+  geom_vline(xintercept = lower, colour="green", linetype = "longdash") +
+  geom_vline(xintercept = upper, colour="green", linetype = "longdash") +
+  geom_vline(xintercept = mean, colour="red") +
+  geom_vline(xintercept = median, colour="blue") +
+  geom_vline(xintercept = mode, colour="orange") +
+  xlab("OriGami NMR Test Scoring")
+```
+      <br>
+      **range:** from `r min`
+      to `r max` points <br>
+      **<span style="color: orange;">mode:</span>** `r mode`<br>
+      **<span style="color: red;">mean:</span>** `r format(round(mean,2), nsmall=2)`,
+      **sd:** `r format(round(sd,2), nsmall=2)`<br>
+      **<span style="color: blue;">median:</span>** `r median`, 
+      **<span style="color: green;">quantiles:</span>** Q1=`r lower`, Q3=`r upper`<br>
+      **skewness**: `r format(round(skew,2), nsmall=2)`
+    </td>
+    <td>
+```{r test score distribution{{z}}-6, echo=FALSE}
+min = min(totalscore_drop$sumtotal_c)
+max = max(totalscore_drop$sumtotal_c)
+mode = Mode(totalscore_drop$sumtotal_c)[1]
+mean = mean(totalscore_drop$sumtotal_c)
+sd = sd(totalscore_drop$sumtotal_c)
+median = median(totalscore_drop$sumtotal_c)
+lower = quantile(totalscore_drop$sumtotal_c)[[2]]
+upper = quantile(totalscore_drop$sumtotal_c)[[4]]
+skew = skewness(totalscore_drop$sumtotal_c, na.rm = FALSE)
+
+ggplot(totalscore_drop, aes(x=sumtotal_c)) +
+  geom_histogram(aes(y=..density..),colour="black", fill="white", binwidth = 5) +
+  geom_density(alpha=.2, fill="#3880ff") +
+  geom_vline(xintercept = lower, colour="green", linetype = "longdash") +
+  geom_vline(xintercept = upper, colour="green", linetype = "longdash") +
+  geom_vline(xintercept = mean, colour="red") +
+  geom_vline(xintercept = median, colour="blue") +
+  geom_vline(xintercept = mode, colour="orange") +
+  xlab("OriGami NMR Test Scoring")
+```
+      <br>
+      **range:** from `r min`
+      to `r max` points <br>
+      **<span style="color: orange;">mode:</span>** `r mode`<br>
+      **<span style="color: red;">mean:</span>** `r format(round(mean,2), nsmall=2)`,
+      **sd:** `r format(round(sd,2), nsmall=2)`<br>
+      **<span style="color: blue;">median:</span>** `r median`, 
+      **<span style="color: green;">quantiles:</span>** Q1=`r lower`, Q3=`r upper`<br>
+      **skewness**: `r format(round(skew,2), nsmall=2)`
+    </td>
+  </tr>
+</table>
+
+

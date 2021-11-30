@@ -1,0 +1,43 @@
+<!-- Tab. 5: Task Performance Data -->
+
+<table style="width: 100%; border-collapse: collapse; border: 1px solid grey; text-align: center;">
+  <colgroup>
+    <col span="2" style="background-color:lightgrey; border: 1px solid grey;">
+    <col span="2" style=" border: 1px solid grey;">
+  </colgroup>
+  <tr style="background-color:lightgrey; border: 1px solid grey;">
+    <td></td>
+    <td></td>
+    <td>**Accuracy Data**</td>
+    <td>**Process Data**</td>
+  </tr>
+  <tr style="border: 1px solid grey;">
+    <td>**Location Tasks**</td>
+    <td>**Self-Location**</td>
+    <td>Distances between the clicked location by the participant and his/her real location (in m),<br>
+    variable names: _LOC1, LOC2, LOC3, LOC4, LOC5, LOC6_ and _LOCr1, LOCr2, LOCr3, LOCr4, LOCr5, LOCr6 (subtracted with GPS error)_</td>
+    <td>Number of pan and zoom events,<br>
+    variable names: _locpan1, locpan2, locpan3, locpan4, locpan5, locpan6, loczoom1, loczoom2, loczoom3, loczoom4, loczoom5, loczoom6_</td>
+  </tr>
+  <tr style="border: 1px solid grey;">
+    <td></td>
+    <td>**Navigation-to-a-flag**</td>
+    <td>Distances between the confirmed location by the participant and the location of the flag (in m),<br>
+    variable names: _LNV1, LNV2, LNV3, LNV4, LNV5, LNV6_ and _LNVr1, LNVr2, LNVr3, LNVr4, LNVr5, LNVr6 (subtracted with GPS error)_</td>
+    <td>Route length of the participant (in m),<br>
+    Variable names: _lnvroute1, lnvroute2, lnvroute3, lnvroute4, lnvroute5, lnvroute6_</td>
+  </tr>
+  <tr style="border: 1px solid grey;">
+    <td>**Direction Tasks**</td>
+    <td>**Mark-view-direction**</td>
+    <td>Angle between the clicked view direction by the participant and his/her real view direction (in°), variable names: _DM1, DM2, DM3, DM4_</td>
+    <td>_NA_</td>
+  </tr>
+  <tr style="border: 1px solid grey;">
+    <td></td>
+    <td>**Adopt-view-direction**</td>
+    <td>Angle between the confirmed view direction by the participant and the direction of the arrow on the map (in°), variable names: _DA1, DA2, DA3, DA4_</td>
+    <td>Sum of turning movements (in °),
+    variable names: _daturn1, daturn2, daturn3, daturn4_</td>
+  </tr>
+</table>
