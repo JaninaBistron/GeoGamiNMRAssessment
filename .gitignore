@@ -9,3 +9,5 @@ results/.DS_Store
 results/custom/.DS_Store
 results/duelmen/.DS_Store
 results/senden/.DS_Store
+.Rhistory
+.DS_Store
