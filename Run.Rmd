@@ -46,7 +46,7 @@ library("DescTools")
 
 # 1 Introduction
 
-On the basis of the location-based game [GeoGami](https://origami.ifgi.de), we created an assessment for measuring navigational map reading (NMR) competencies in children aged six to ten. The assessment addresses competencies in orientating with a map in a real-world environment. We evaluated the assessment by conducting a study with 51 primary school students.
+On the basis of the location-based game [GeoGami](https://geogami.ifgi.de), we created an assessment for measuring navigational map reading (NMR) competencies in children aged six to ten. The assessment addresses competencies in orientating with a map in a real-world environment. We evaluated the assessment by conducting a study with 51 primary school students.
 
 The following **evaluation script** gives the reader a detailed insight in:
 
@@ -97,7 +97,7 @@ The assessment is a digital game in our app GeoGami. We implemented it for two d
 
 The app GeoGami can be installed on different mobile devices (iOS or Android mobile phones and tablets). However, the assessment is designed for tablets allowing the user to see a large map section with a lot of details at once. We use the iPad (7th generation) with a 10.2" display in the Wi-Fi cellular version for having continuous mobile Internet connection during the assessment. A SIM card is needed to assure an accurate GPS localization. 
 
-For further information on GeoGami (on how to install and use it), see the [GeoGami Website](https://origami.ifgi.de).
+For further information on GeoGami (on how to install and use it), see the [GeoGami Website](https://geogami.ifgi.de).
 
 ### 2.1.5 Assessment Execution
 
@@ -218,9 +218,9 @@ Details on the description and interpretation of the results are presented in th
 
 We conducted an evaluation study on the assessment at two different locations: The Citizens Park in Senden and the Wildlife Park in Dülmen, Germany. 51 primary school students aged six to ten (age: MD = 8.33, SD = 1.11; 29 boys, 22 girls) participated in the study and their NMR competency score was calculated. Additionally, we asked experts to evaluate the children's NMR competencies based on their observations and the children's think-aloud statements. For details on the study and methodology, see the corresponding [publication](https://psyarxiv.com/yps2n/).
 
-The tutorials conducted can be found here: [Tutorial Senden](https://app.origami.ifgi.de/play-game/game-detail/60bf2fb02e3801b40064c179), [Tutorial Dülmen](https://app.origami.ifgi.de/play-game/game-detail/60bf2ff72e3801b40064c17b).
+The tutorials conducted can be found here: [Tutorial Senden](https://app.geogami.ifgi.de/play-game/game-detail/60bf2fb02e3801b40064c179), [Tutorial Dülmen](https://app.geogami.ifgi.de/play-game/game-detail/60bf2ff72e3801b40064c17b).
 
-The assessment games for these locations can be found here: [GeoGami NMR Assessment Senden](https://app.origami.ifgi.de/play-game/game-detail/60bf2fe22e3801b40064c17a), [GeoGami NMR Assessment Dülmen](https://app.origami.ifgi.de/play-game/game-detail/60bf301f2e3801b40064c17c).
+The assessment games for these locations can be found here: [GeoGami NMR Assessment Senden](https://app.geogami.ifgi.de/play-game/game-detail/60bf2fe22e3801b40064c17a), [GeoGami NMR Assessment Dülmen](https://app.geogami.ifgi.de/play-game/game-detail/60bf301f2e3801b40064c17c).
 
 The Open Street Map material for these locations can be found here: [Test area Senden](https://www.openstreetmap.org/#map=18/51.85402/7.48372), [Test area Dülmen](https://www.openstreetmap.org/#map=17/51.83135/7.25875).
 

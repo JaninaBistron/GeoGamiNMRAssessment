@@ -1,4 +1,4 @@
-![](https://origami.ifgi.de/pictures/logo/icon.png)
+![](https://geogami.ifgi.de/pictures/logo/icon.png)
 
 # GeoGami NMR Assessment
 
@@ -6,9 +6,9 @@
 
 ## Open Reproducible Data of the GeoGami NMR Assessment for Navigational Map Reading Competencies
 
-On the basis of our location-based game [GeoGami](https://app.origami.ifgi.de) we created an assessment for navigational map reading (NMR) competencies. The main aim of the following R project is to give the reader details on our NMR competency score calculation and the assessment evaluation. Moreover, we want to provide information and scripts for conducting the assessment for another location or age group.
+On the basis of our location-based game [GeoGami](https://app.geogami.ifgi.de) we created an assessment for navigational map reading (NMR) competencies. The main aim of the following R project is to give the reader details on our NMR competency score calculation and the assessment evaluation. Moreover, we want to provide information and scripts for conducting the assessment for another location or age group.
 
-For more information on **GeoGami** visit the [Website](https://origami.ifgi.de).
+For more information on **GeoGami** visit the [Website](https://geogami.ifgi.de).
 
 ## Project structure
 
@@ -64,13 +64,13 @@ _Fig. B: Screenshot of the R Markdown File: In this sensitivity analysis you can
 
 If you are interested in developing the assessment for your location and/or another target group of interest (e.g. another age group), you have to proceed as follows:
 
-1. Install GeoGami on your mobile devices (see [GeoGami website](https://origami.ifgi.de) for further instructions). Information on the devices can be found in `Run.Rmd`, chapter 2. 
+1. Install GeoGami on your mobile devices (see [GeoGami website](https://geogami.ifgi.de) for further instructions). Information on the devices can be found in `Run.Rmd`, chapter 2. 
 
 2. Create an GeoGami account and contact us for getting the right user role to get access to your data.
 
 3. Create a game in GeoGami with the structure described in `Run.Rmd`, chapter 2. `Run.Rmd` is a test manual for using GeoGami to assess NMR competencies.
 
-4. Conduct the assessment. Use numbers for your participants instead of real names! _Note: A mobile Internet connection is needed for conducting the test (SIM card). However, if the Internet connection breaks (due to the bad Internet signal in park areas), it is nevertheless possible to continue playing the game started. The data won't be uploaded to the server then, but this can be fixed by uploading it later (via pressing the cloud-button in the evaluation mode of OriGami)._
+4. Conduct the assessment. Use numbers for your participants instead of real names! _Note: A mobile Internet connection is needed for conducting the test (SIM card). However, if the Internet connection breaks (due to the bad Internet signal in park areas), it is nevertheless possible to continue playing the game started. The data won't be uploaded to the server then, but this can be fixed by uploading it later (via pressing the cloud-button in the evaluation mode of GeoGami)._
 
 5. Save one json-logfile for all your data on your computer.
 
@@ -111,7 +111,7 @@ Heisenbergstraße 2
 
 **Mail:** geogami.ifgi(at)uni-muenster.de
 
-**Team:** https://origami.ifgi.de/kontakt.html#team
+**Team:** https://geogami.ifgi.de/kontakt.html#team
 
 ## License
 
